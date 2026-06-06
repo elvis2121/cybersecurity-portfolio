@@ -1,0 +1,119 @@
+{
+  "name": "Elvis Njau",
+  "title": "Junior Cybersecurity Engineer",
+  "specialty": "SOC Analyst",
+  "location": "Nairobi, Kenya",
+  "availability": "Open to remote and on-site SOC analyst roles",
+  "email": "elvisnjau@gmail.com",
+  "github": "https://github.com/elvis2121",
+  "linkedin": "https://www.linkedin.com/in/elvis-njau-aa169695",
+  "summary": "Results-driven junior cybersecurity engineer focused on blue-team defense, alert investigation, threat hunting, incident response, and detection engineering. I combine hands-on security labs with four years of IT administration and four years of technical support experience.",
+  "objective": "I am looking for a junior SOC analyst opportunity where I can investigate alerts, analyze endpoint and network telemetry, document incidents clearly, and help improve practical detection coverage.",
+  "competencies": [
+    "SOC alert triage and investigation",
+    "Threat hunting and intelligence",
+    "Incident response and DFIR",
+    "SIEM, IDS, and endpoint monitoring",
+    "Network traffic analysis",
+    "Web, API, and mobile security",
+    "OSINT and attack-surface reconnaissance",
+    "Python, Bash, and PowerShell automation",
+    "Windows, Linux, and Active Directory",
+    "Cloud security and infrastructure",
+    "Governance, risk, and compliance",
+    "Clear technical reporting"
+  ],
+  "skillGroups": [
+    {
+      "title": "Security Operations",
+      "description": "SOC workflows, alert triage, incident classification, false-positive reduction, IOC correlation, Cyber Kill Chain analysis, and MITRE ATT&CK mapping.",
+      "tools": ["Splunk", "Elastic", "Wazuh", "Security Onion", "MITRE ATT&CK"]
+    },
+    {
+      "title": "Network & Detection",
+      "description": "Packet analysis, IDS/IPS rule authoring, wireless assessment, MITM detection, and investigation of suspicious network activity.",
+      "tools": ["Wireshark", "Snort", "Suricata", "Nmap", "Kismet", "Bettercap"]
+    },
+    {
+      "title": "Endpoint & DFIR",
+      "description": "Endpoint monitoring, forensic collection, disk and memory analysis, malware triage, response playbooks, and evidence preservation.",
+      "tools": ["Velociraptor", "Autopsy", "Volatility", "VirusTotal", "ANY.RUN"]
+    },
+    {
+      "title": "Application Security",
+      "description": "OWASP-aligned web, API, and Android testing across authorization, authentication, injection, transport, storage, and client-side controls.",
+      "tools": ["Burp Suite", "OWASP ZAP", "Postman", "JADX", "ADB", "MobSF"]
+    },
+    {
+      "title": "Reconnaissance",
+      "description": "Passive and active discovery for target profiling, subdomain enumeration, DNS analysis, and attack-surface mapping.",
+      "tools": ["Shodan", "Maltego", "theHarvester", "Recon-ng", "Subfinder", "httpx"]
+    },
+    {
+      "title": "Automation & SOAR",
+      "description": "Security scripts, log parsing, IOC detection, API integrations, alert enrichment, ticketing pipelines, and repeatable analyst workflows.",
+      "tools": ["Python", "Bash", "PowerShell", "n8n", "REST APIs"]
+    },
+    {
+      "title": "Cloud & GRC",
+      "description": "AWS security reviews, IAM and S3 misconfiguration analysis, CloudTrail review, risk assessment, policies, and framework-based gap analysis.",
+      "tools": ["AWS", "NIST CSF", "ISO 27001", "GDPR", "PCI-DSS"]
+    },
+    {
+      "title": "Adversary Simulation",
+      "description": "Controlled Windows and Active Directory exercises, privilege escalation, post-exploitation, and detection validation in authorized labs.",
+      "tools": ["Metasploit", "NetExec", "Responder", "Sliver", "Empire"]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AfricaHackon Cybersecurity Certificate",
+      "issuer": "AfricaHackon",
+      "date": "June 2026"
+    },
+    {
+      "name": "Security Analyst Level 1 (SAL1)",
+      "issuer": "TryHackMe",
+      "date": "August 2025"
+    },
+    {
+      "name": "Google Cybersecurity Professional Certificate",
+      "issuer": "Google / Coursera",
+      "date": "December 2024"
+    }
+  ],
+  "experience": [
+    {
+      "role": "IT Administrator",
+      "company": "Minthub Limited",
+      "period": "2020 - 2024",
+      "details": [
+        "Managed Windows and Linux servers, network devices, and employee workstations to maintain reliable operations.",
+        "Implemented system hardening and patch-management practices to reduce infrastructure risk.",
+        "Optimized network configurations and firewall rules to improve connectivity and security posture.",
+        "Automated administration and monitoring tasks with PowerShell and Bash.",
+        "Provided advanced troubleshooting and technical support across business workflows."
+      ]
+    },
+    {
+      "role": "IT Support Specialist",
+      "company": "Kendas Hotels Limited",
+      "period": "2016 - 2020",
+      "details": [
+        "Supported Point of Sale and Property Management systems in a service-critical environment.",
+        "Resolved hardware and software issues for staff and guests while maintaining operational continuity.",
+        "Managed workstation security, configuration, and software deployment.",
+        "Executed backup and recovery procedures for sensitive business information.",
+        "Coordinated IT asset maintenance, upgrades, and vendor relationships."
+      ]
+    }
+  ],
+  "attributes": [
+    "Analytical and detail-oriented",
+    "Self-motivated learner",
+    "Clear written and verbal communicator",
+    "Collaborative teammate",
+    "Adaptable under pressure",
+    "Committed to ethical practice"
+  ]
+}

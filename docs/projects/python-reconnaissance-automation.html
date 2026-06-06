@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070914">
+  <meta name="description" content="Automated subdomain discovery and live-host probing by orchestrating Subfinder and httpx from a reusable Python command-line workflow.">
+  <meta property="og:title" content="Python Reconnaissance Automation | Elvis Njau">
+  <meta property="og:description" content="Automated subdomain discovery and live-host probing by orchestrating Subfinder and httpx from a reusable Python command-line workflow.">
+  <meta property="og:type" content="website">
+  <title>Python Reconnaissance Automation | Elvis Njau</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script src="../assets/app.js" defer></script>
+</head>
+<body>
+
+    
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="../" aria-label="Elvis Njau home">
+          <span class="brand-mark" aria-hidden="true">EN</span>
+          <span class="brand-name">Elvis Njau / SOC Analyst</span>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-button>
+          <span aria-hidden="true"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav data-open="false">
+          <a href="../#about">About</a><a href="../#skills">Skills</a><a href="../#projects">Projects</a><a href="../#experience">Experience</a><a href="../#contact">Contact</a>
+          <a class="nav-social" href="https://github.com/elvis2121" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="nav-social" href="https://www.linkedin.com/in/elvis-njau-aa169695" target="_blank" rel="noreferrer">LinkedIn</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content">
+      <section class="project-hero">
+        <div class="container">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="../">Portfolio</a><span>/</span><a href="../#projects">Projects</a><span>/</span><span>Python Reconnaissance Automation</span>
+          </nav>
+          <div class="project-hero-grid">
+            <div data-reveal>
+              <p class="section-kicker">Automation case study</p>
+              <h1>Python Reconnaissance Automation</h1>
+              <p class="project-objective">Automated subdomain discovery and live-host probing by orchestrating Subfinder and httpx from a reusable Python command-line workflow.</p>
+              <div class="button-row">
+                <a class="button" href="https://github.com/elvis2121/python-reconnaissance-automation" target="_blank" rel="noreferrer">View GitHub repository</a>
+                <a class="button button-secondary" href="../#projects">All projects</a>
+              </div>
+            </div>
+            <aside class="project-facts" data-reveal>
+              <div class="project-fact"><span>Focus</span><strong>Automation</strong></div>
+              <div class="project-fact"><span>Evidence</span><strong>3 screenshots</strong></div>
+              <div class="project-fact"><span>Repository</span><strong>Public on GitHub</strong></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="container project-summary-grid">
+        <article class="summary-card" data-reveal>
+          <h2>Skills demonstrated</h2>
+          <ul><li>Accepted domain and output settings through CLI arguments or an interactive fallback.</li><li>Executed Subfinder and verified that its result file existed and contained data.</li><li>Passed discovered assets into httpx and counted responsive hosts.</li><li>Handled missing binaries, failed subprocesses, empty results, and invalid input.</li></ul>
+        </article>
+        <article class="summary-card" data-reveal>
+          <h2>Tools used</h2>
+          <ul class="tag-list"><li class="tag">Python</li><li class="tag">Subfinder</li><li class="tag">httpx</li><li class="tag">argparse</li><li class="tag">pathlib</li><li class="tag">subprocess</li></ul>
+        </article>
+      </section>
+
+      <section class="report-shell">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Technical walkthrough</p>
+              <h2 class="section-title">Lab evidence and <span class="accent-text">investigation steps.</span></h2>
+            </div>
+            <a class="button button-secondary" href="https://github.com/elvis2121/python-reconnaissance-automation" target="_blank" rel="noreferrer">Open on GitHub</a>
+          </div>
+          <article class="report-content">
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 1: The script named pythonscanner.py prompts user to input domain then scans the domain for subdomain using subfinder tool.</figcaption>
+          <a class="evidence-link" href="../content/projects/python-reconnaissance-automation/assets/step-01.png" data-evidence-link data-caption="Ref 1: The script named pythonscanner.py prompts user to input domain then scans the domain for subdomain using subfinder tool.">
+            <img src="../content/projects/python-reconnaissance-automation/assets/step-01.png" alt="The script named pythonscanner.py prompts user to input domain then scans the domain for subdomain using subfinder tool." loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 2: The subdomains are then passed to httpx tool which checks if the subdomains are live and saves the results to file named recon_results_live.txt</figcaption>
+          <a class="evidence-link" href="../content/projects/python-reconnaissance-automation/assets/step-02.png" data-evidence-link data-caption="Ref 2: The subdomains are then passed to httpx tool which checks if the subdomains are live and saves the results to file named recon_results_live.txt">
+            <img src="../content/projects/python-reconnaissance-automation/assets/step-02.png" alt="The subdomains are then passed to httpx tool which checks if the subdomains are live and saves the results to file named recon_results_live.txt" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 3: Results of the live subdomains are displayed on the screenshot above</figcaption>
+          <a class="evidence-link" href="../content/projects/python-reconnaissance-automation/assets/step-03.png" data-evidence-link data-caption="Ref 3: Results of the live subdomains are displayed on the screenshot above">
+            <img src="../content/projects/python-reconnaissance-automation/assets/step-03.png" alt="Results of the live subdomains are displayed on the screenshot above" loading="lazy">
+          </a>
+        </figure></article>
+        </div>
+      </section>
+    </main>
+    <dialog class="lightbox" data-lightbox>
+      <img src="" alt="" data-lightbox-image>
+      <footer>
+        <p data-lightbox-caption></p>
+        <button type="button" onclick="this.closest('dialog').close()">Close</button>
+      </footer>
+    </dialog>
+    
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span data-current-year></span> Elvis Njau. Built for evidence-led security work.</span>
+      <div class="footer-links">
+        <a href="https://github.com/elvis2121" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/elvis-njau-aa169695" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="mailto:elvisnjau@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

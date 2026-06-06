@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070914">
+  <meta name="description" content="Performed a controlled Android application assessment using static analysis, ADB-driven dynamic testing, storage inspection, and backend validation to identify eight security weaknesses.">
+  <meta property="og:title" content="Android Application Security Assessment: Beetlebug | Elvis Njau">
+  <meta property="og:description" content="Performed a controlled Android application assessment using static analysis, ADB-driven dynamic testing, storage inspection, and backend validation to identify eight security weaknesses.">
+  <meta property="og:type" content="website">
+  <title>Android Application Security Assessment: Beetlebug | Elvis Njau</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script src="../assets/app.js" defer></script>
+</head>
+<body>
+
+    
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="../" aria-label="Elvis Njau home">
+          <span class="brand-mark" aria-hidden="true">EN</span>
+          <span class="brand-name">Elvis Njau / SOC Analyst</span>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-button>
+          <span aria-hidden="true"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav data-open="false">
+          <a href="../#about">About</a><a href="../#skills">Skills</a><a href="../#projects">Projects</a><a href="../#experience">Experience</a><a href="../#contact">Contact</a>
+          <a class="nav-social" href="https://github.com/elvis2121" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="nav-social" href="https://www.linkedin.com/in/elvis-njau-aa169695" target="_blank" rel="noreferrer">LinkedIn</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content">
+      <section class="project-hero">
+        <div class="container">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="../">Portfolio</a><span>/</span><a href="../#projects">Projects</a><span>/</span><span>Android Application Security Assessment: Beetlebug</span>
+          </nav>
+          <div class="project-hero-grid">
+            <div data-reveal>
+              <p class="section-kicker">Application Security case study</p>
+              <h1>Android Application Security Assessment: Beetlebug</h1>
+              <p class="project-objective">Performed a controlled Android application assessment using static analysis, ADB-driven dynamic testing, storage inspection, and backend validation to identify eight security weaknesses.</p>
+              <div class="button-row">
+                <a class="button" href="https://github.com/elvis2121/android-application-security-assessment-beetlebug" target="_blank" rel="noreferrer">View GitHub repository</a>
+                <a class="button button-secondary" href="../#projects">All projects</a>
+              </div>
+            </div>
+            <aside class="project-facts" data-reveal>
+              <div class="project-fact"><span>Focus</span><strong>Application Security</strong></div>
+              <div class="project-fact"><span>Evidence</span><strong>18 screenshots</strong></div>
+              <div class="project-fact"><span>Repository</span><strong>Public on GitHub</strong></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="container project-summary-grid">
+        <article class="summary-card" data-reveal>
+          <h2>Skills demonstrated</h2>
+          <ul><li>Mapped application resources, exported activities, embedded values, and backend URLs.</li><li>Pulled SQLite and Shared Preferences artifacts and verified plaintext sensitive data.</li><li>Monitored Logcat for credit-card and PII leakage.</li><li>Validated SQL injection, public Firebase access, and unauthenticated administrator activity invocation.</li><li>Assigned risk ratings and paired every finding with actionable remediation.</li></ul>
+        </article>
+        <article class="summary-card" data-reveal>
+          <h2>Tools used</h2>
+          <ul class="tag-list"><li class="tag">JADX</li><li class="tag">ADB</li><li class="tag">Logcat</li><li class="tag">SQLite Browser</li><li class="tag">curl</li><li class="tag">jq</li><li class="tag">Android emulator</li></ul>
+        </article>
+      </section>
+
+      <section class="report-shell">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Technical walkthrough</p>
+              <h2 class="section-title">Lab evidence and <span class="accent-text">investigation steps.</span></h2>
+            </div>
+            <a class="button button-secondary" href="https://github.com/elvis2121/android-application-security-assessment-beetlebug" target="_blank" rel="noreferrer">Open on GitHub</a>
+          </div>
+          <article class="report-content">
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 1: By reviewing the apk code, I noticed that the pin used to unlock the folder is being compared to a hardcoded string located under resources/res/strings.xml file.</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-01.png" data-evidence-link data-caption="Ref 1: By reviewing the apk code, I noticed that the pin used to unlock the folder is being compared to a hardcoded string located under resources/res/strings.xml file.">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-01.png" alt="By reviewing the apk code, I noticed that the pin used to unlock the folder is being compared to a hardcoded string located under resources/res/strings.xml file." loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 2: When reviewing the strings.xml file we find the hardcoded pin 7432580.</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-02.png" data-evidence-link data-caption="Ref 2: When reviewing the strings.xml file we find the hardcoded pin 7432580.">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-02.png" alt="When reviewing the strings.xml file we find the hardcoded pin 7432580." loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 3: EMBEDDED SECRETS</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-03.png" data-evidence-link data-caption="Ref 3: EMBEDDED SECRETS">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-03.png" alt="EMBEDDED SECRETS" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 4: By inspecting the class associated with promo code, I realized that the promocode is hardcoded as beetle1759.</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-04.png" data-evidence-link data-caption="Ref 4: By inspecting the class associated with promo code, I realized that the promocode is hardcoded as beetle1759.">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-04.png" alt="By inspecting the class associated with promo code, I realized that the promocode is hardcoded as beetle1759." loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 5: The promo code gives a discount of $300 and can be used multiple times by the same person</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-05.png" data-evidence-link data-caption="Ref 5: The promo code gives a discount of $300 and can be used multiple times by the same person">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-05.png" alt="The promo code gives a discount of $300 and can be used multiple times by the same person" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 6: By using the adb tool to pull the shared_pref_flag.xml file, I am able to view the username and password entered on the front end.</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-06.png" data-evidence-link data-caption="Ref 6: By using the adb tool to pull the shared_pref_flag.xml file, I am able to view the username and password entered on the front end.">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-06.png" alt="By using the adb tool to pull the shared_pref_flag.xml file, I am able to view the username and password entered on the front end." loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 7: SQLITE STORAGE</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-07.png" data-evidence-link data-caption="Ref 7: SQLITE STORAGE">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-07.png" alt="SQLITE STORAGE" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 8: SQLITE STORAGE</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-08.png" data-evidence-link data-caption="Ref 8: SQLITE STORAGE">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-08.png" alt="SQLITE STORAGE" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 9: The master pin used to login is stored in a sqlite database in plain text.</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-09.png" data-evidence-link data-caption="Ref 9: The master pin used to login is stored in a sqlite database in plain text.">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-09.png" alt="The master pin used to login is stored in a sqlite database in plain text." loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 10: By using a basic sql query, I am able to view credentials of other users in the database.</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-10.png" data-evidence-link data-caption="Ref 10: By using a basic sql query, I am able to view credentials of other users in the database.">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-10.png" alt="By using a basic sql query, I am able to view credentials of other users in the database." loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 11: By reviewing the strings.xml file, i found a firebase url, https://beetlebug-374fc-default-rtdb.firebaseio.com</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-11.png" data-evidence-link data-caption="Ref 11: By reviewing the strings.xml file, i found a firebase url, https://beetlebug-374fc-default-rtdb.firebaseio.com">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-11.png" alt="By reviewing the strings.xml file, i found a firebase url, https://beetlebug-374fc-default-rtdb.firebaseio.com" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 12: Using the curl command and piping the results via jq (json processing tool), the database details are exposed and readable.</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-12.png" data-evidence-link data-caption="Ref 12: Using the curl command and piping the results via jq (json processing tool), the database details are exposed and readable.">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-12.png" alt="Using the curl command and piping the results via jq (json processing tool), the database details are exposed and readable." loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 13: I am able to extract the flag from the database results.</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-13.png" data-evidence-link data-caption="Ref 13: I am able to extract the flag from the database results.">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-13.png" alt="I am able to extract the flag from the database results." loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 14: INSECURE LOGGING</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-14.png" data-evidence-link data-caption="Ref 14: INSECURE LOGGING">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-14.png" alt="INSECURE LOGGING" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 15: Insecure logging occurs when an application writes sensitive information—such as credentials, session tokens, or PII—to the Android system log (Logcat).</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-15.png" data-evidence-link data-caption="Ref 15: Insecure logging occurs when an application writes sensitive information—such as credentials, session tokens, or PII—to the Android system log (Logcat).">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-15.png" alt="Insecure logging occurs when an application writes sensitive information—such as credentials, session tokens, or PII—to the Android system log (Logcat)." loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 16: Using the adb tool and running the command adb logcat and inspecting the logs, I am able to view credit card details on the applications logs.</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-16.png" data-evidence-link data-caption="Ref 16: Using the adb tool and running the command adb logcat and inspecting the logs, I am able to view credit card details on the applications logs.">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-16.png" alt="Using the adb tool and running the command adb logcat and inspecting the logs, I am able to view credit card details on the applications logs." loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 17: As I was reviewing the strings.xml file I noticed admin activity that is exported which I call and find the flag.</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-17.png" data-evidence-link data-caption="Ref 17: As I was reviewing the strings.xml file I noticed admin activity that is exported which I call and find the flag.">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-17.png" alt="As I was reviewing the strings.xml file I noticed admin activity that is exported which I call and find the flag." loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 18: By running the command (adb shell am start -n app.beetlebug/.ctf.b33tleAdministrator) I am able to access the administrators portal.</figcaption>
+          <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-18.png" data-evidence-link data-caption="Ref 18: By running the command (adb shell am start -n app.beetlebug/.ctf.b33tleAdministrator) I am able to access the administrators portal.">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-18.png" alt="By running the command (adb shell am start -n app.beetlebug/.ctf.b33tleAdministrator) I am able to access the administrators portal." loading="lazy">
+          </a>
+        </figure></article>
+        </div>
+      </section>
+    </main>
+    <dialog class="lightbox" data-lightbox>
+      <img src="" alt="" data-lightbox-image>
+      <footer>
+        <p data-lightbox-caption></p>
+        <button type="button" onclick="this.closest('dialog').close()">Close</button>
+      </footer>
+    </dialog>
+    
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span data-current-year></span> Elvis Njau. Built for evidence-led security work.</span>
+      <div class="footer-links">
+        <a href="https://github.com/elvis2121" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/elvis-njau-aa169695" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="mailto:elvisnjau@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

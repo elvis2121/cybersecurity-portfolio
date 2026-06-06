@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070914">
+  <meta name="description" content="Investigated keylogger exfiltration in packet traffic and created Snort rules for ICMP and Nmap SYN-scan detection.">
+  <meta property="og:title" content="Network Forensics and Snort Detection Engineering | Elvis Njau">
+  <meta property="og:description" content="Investigated keylogger exfiltration in packet traffic and created Snort rules for ICMP and Nmap SYN-scan detection.">
+  <meta property="og:type" content="website">
+  <title>Network Forensics and Snort Detection Engineering | Elvis Njau</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script src="../assets/app.js" defer></script>
+</head>
+<body>
+
+    
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="../" aria-label="Elvis Njau home">
+          <span class="brand-mark" aria-hidden="true">EN</span>
+          <span class="brand-name">Elvis Njau / SOC Analyst</span>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-button>
+          <span aria-hidden="true"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav data-open="false">
+          <a href="../#about">About</a><a href="../#skills">Skills</a><a href="../#projects">Projects</a><a href="../#experience">Experience</a><a href="../#contact">Contact</a>
+          <a class="nav-social" href="https://github.com/elvis2121" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="nav-social" href="https://www.linkedin.com/in/elvis-njau-aa169695" target="_blank" rel="noreferrer">LinkedIn</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content">
+      <section class="project-hero">
+        <div class="container">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="../">Portfolio</a><span>/</span><a href="../#projects">Projects</a><span>/</span><span>Network Forensics and Snort Detection Engineering</span>
+          </nav>
+          <div class="project-hero-grid">
+            <div data-reveal>
+              <p class="section-kicker">Detection &amp; Network case study</p>
+              <h1>Network Forensics and Snort Detection Engineering</h1>
+              <p class="project-objective">Investigated keylogger exfiltration in packet traffic and created Snort rules for ICMP and Nmap SYN-scan detection.</p>
+              <div class="button-row">
+                <a class="button" href="https://github.com/elvis2121/network-forensics-and-snort-detection-engineering" target="_blank" rel="noreferrer">View GitHub repository</a>
+                <a class="button button-secondary" href="../#projects">All projects</a>
+              </div>
+            </div>
+            <aside class="project-facts" data-reveal>
+              <div class="project-fact"><span>Focus</span><strong>Detection &amp; Network</strong></div>
+              <div class="project-fact"><span>Evidence</span><strong>9 screenshots</strong></div>
+              <div class="project-fact"><span>Repository</span><strong>Public on GitHub</strong></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="container project-summary-grid">
+        <article class="summary-card" data-reveal>
+          <h2>Skills demonstrated</h2>
+          <ul><li>Filtered traffic by protocol, host, port, flags, and credential-related strings.</li><li>Traced keylogger exfiltration from the victim to attacker infrastructure.</li><li>Recovered the username, password, URL, and two transferred HTML files.</li><li>Created Snort rules for ICMP echo behavior and Nmap-style SYN packets with no payload.</li></ul>
+        </article>
+        <article class="summary-card" data-reveal>
+          <h2>Tools used</h2>
+          <ul class="tag-list"><li class="tag">Wireshark</li><li class="tag">Snort</li><li class="tag">PCAP analysis</li><li class="tag">FTP/HTTP analysis</li><li class="tag">Nmap traffic patterns</li></ul>
+        </article>
+      </section>
+
+      <section class="report-shell">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Technical walkthrough</p>
+              <h2 class="section-title">Lab evidence and <span class="accent-text">investigation steps.</span></h2>
+            </div>
+            <a class="button button-secondary" href="https://github.com/elvis2121/network-forensics-and-snort-detection-engineering" target="_blank" rel="noreferrer">Open on GitHub</a>
+          </div>
+          <article class="report-content">
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 1: Assignment 2</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-01.png" data-evidence-link data-caption="Ref 1: Assignment 2">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-01.png" alt="Assignment 2" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 2: Assignment 2</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-02.png" data-evidence-link data-caption="Ref 2: Assignment 2">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-02.png" alt="Assignment 2" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 3: Assignment 2</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-03.png" data-evidence-link data-caption="Ref 3: Assignment 2">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-03.png" alt="Assignment 2" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 4: Assignment 2</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-04.png" data-evidence-link data-caption="Ref 4: Assignment 2">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-04.png" alt="Assignment 2" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 5: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-05.png" data-evidence-link data-caption="Ref 5: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-05.png" alt="https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 6: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-06.png" data-evidence-link data-caption="Ref 6: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-06.png" alt="https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 7: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-07.png" data-evidence-link data-caption="Ref 7: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-07.png" alt="https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 8: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-08.png" data-evidence-link data-caption="Ref 8: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-08.png" alt="https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 9: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-09.png" data-evidence-link data-caption="Ref 9: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-09.png" alt="https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/" loading="lazy">
+          </a>
+        </figure></article>
+        </div>
+      </section>
+    </main>
+    <dialog class="lightbox" data-lightbox>
+      <img src="" alt="" data-lightbox-image>
+      <footer>
+        <p data-lightbox-caption></p>
+        <button type="button" onclick="this.closest('dialog').close()">Close</button>
+      </footer>
+    </dialog>
+    
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span data-current-year></span> Elvis Njau. Built for evidence-led security work.</span>
+      <div class="footer-links">
+        <a href="https://github.com/elvis2121" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/elvis-njau-aa169695" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="mailto:elvisnjau@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

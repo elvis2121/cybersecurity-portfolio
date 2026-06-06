@@ -1,0 +1,68 @@
+[
+  {
+    "slug": "network-forensics-and-snort-detection-engineering",
+    "category": "Detection & Network",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "slug": "external-attack-surface-reconnaissance",
+    "category": "Reconnaissance",
+    "featured": true,
+    "order": 2
+  },
+  {
+    "slug": "python-reconnaissance-automation",
+    "category": "Automation",
+    "featured": true,
+    "order": 3
+  },
+  {
+    "slug": "wireless-security-assessment-lab-series",
+    "category": "Detection & Network",
+    "featured": true,
+    "order": 4
+  },
+  {
+    "slug": "owasp-crapi-web-and-api-security-assessment",
+    "category": "Application Security",
+    "featured": true,
+    "order": 5
+  },
+  {
+    "slug": "vulnbank-web-api-and-mobile-security-assessment",
+    "category": "Application Security",
+    "featured": true,
+    "order": 6
+  },
+  {
+    "slug": "android-application-security-assessment-beetlebug",
+    "category": "Application Security",
+    "featured": false,
+    "order": 7
+  },
+  {
+    "slug": "web-and-api-vulnerability-validation-lab",
+    "category": "Application Security",
+    "featured": false,
+    "order": 8
+  },
+  {
+    "slug": "controlled-windows-exploitation-and-reverse-shell-lab",
+    "category": "Endpoint Security",
+    "featured": false,
+    "order": 9
+  },
+  {
+    "slug": "portable-bash-automation-for-secure-data-transformation",
+    "category": "Automation",
+    "featured": false,
+    "order": 10
+  },
+  {
+    "slug": "flask-and-mysql-student-records-api",
+    "category": "Engineering",
+    "featured": false,
+    "order": 11
+  }
+]

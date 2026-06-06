@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070914">
+  <meta name="description" content="Built and tested a portable Bash workflow that reads password entries, skips blank lines, selects a working Base64 implementation, and writes ordered results with explicit failure handling.">
+  <meta property="og:title" content="Portable Bash Automation for Secure Data Transformation | Elvis Njau">
+  <meta property="og:description" content="Built and tested a portable Bash workflow that reads password entries, skips blank lines, selects a working Base64 implementation, and writes ordered results with explicit failure handling.">
+  <meta property="og:type" content="website">
+  <title>Portable Bash Automation for Secure Data Transformation | Elvis Njau</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script src="../assets/app.js" defer></script>
+</head>
+<body>
+
+    
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="../" aria-label="Elvis Njau home">
+          <span class="brand-mark" aria-hidden="true">EN</span>
+          <span class="brand-name">Elvis Njau / SOC Analyst</span>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-button>
+          <span aria-hidden="true"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav data-open="false">
+          <a href="../#about">About</a><a href="../#skills">Skills</a><a href="../#projects">Projects</a><a href="../#experience">Experience</a><a href="../#contact">Contact</a>
+          <a class="nav-social" href="https://github.com/elvis2121" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="nav-social" href="https://www.linkedin.com/in/elvis-njau-aa169695" target="_blank" rel="noreferrer">LinkedIn</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content">
+      <section class="project-hero">
+        <div class="container">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="../">Portfolio</a><span>/</span><a href="../#projects">Projects</a><span>/</span><span>Portable Bash Automation for Secure Data Transformation</span>
+          </nav>
+          <div class="project-hero-grid">
+            <div data-reveal>
+              <p class="section-kicker">Automation case study</p>
+              <h1>Portable Bash Automation for Secure Data Transformation</h1>
+              <p class="project-objective">Built and tested a portable Bash workflow that reads password entries, skips blank lines, selects a working Base64 implementation, and writes ordered results with explicit failure handling.</p>
+              <div class="button-row">
+                <a class="button" href="https://github.com/elvis2121/portable-bash-automation-for-secure-data-transformation" target="_blank" rel="noreferrer">View GitHub repository</a>
+                <a class="button button-secondary" href="../#projects">All projects</a>
+              </div>
+            </div>
+            <aside class="project-facts" data-reveal>
+              <div class="project-fact"><span>Focus</span><strong>Automation</strong></div>
+              <div class="project-fact"><span>Evidence</span><strong>2 screenshots</strong></div>
+              <div class="project-fact"><span>Repository</span><strong>Public on GitHub</strong></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="container project-summary-grid">
+        <article class="summary-card" data-reveal>
+          <h2>Skills demonstrated</h2>
+          <ul><li>Validated that the input exists and is readable before processing.</li><li>Probed available encoders and verified each candidate against a known value.</li><li>Trimmed whitespace, skipped empty records, and preserved source order.</li><li>Used non-zero exit codes and actionable messages for missing files, permissions, and unavailable tooling.</li></ul>
+        </article>
+        <article class="summary-card" data-reveal>
+          <h2>Tools used</h2>
+          <ul class="tag-list"><li class="tag">Bash</li><li class="tag">base64</li><li class="tag">OpenSSL</li><li class="tag">Python 3 fallback</li><li class="tag">POSIX file controls</li></ul>
+        </article>
+      </section>
+
+      <section class="report-shell">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Technical walkthrough</p>
+              <h2 class="section-title">Lab evidence and <span class="accent-text">investigation steps.</span></h2>
+            </div>
+            <a class="button button-secondary" href="https://github.com/elvis2121/portable-bash-automation-for-secure-data-transformation" target="_blank" rel="noreferrer">Open on GitHub</a>
+          </div>
+          <article class="report-content">
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 1: A bashscript named base64script.sh that takes input from afile named passwords and outputs base 64 encoded passwords stored to file named encodedoutput.txt</figcaption>
+          <a class="evidence-link" href="../content/projects/portable-bash-automation-for-secure-data-transformation/assets/step-01.png" data-evidence-link data-caption="Ref 1: A bashscript named base64script.sh that takes input from afile named passwords and outputs base 64 encoded passwords stored to file named encodedoutput.txt">
+            <img src="../content/projects/portable-bash-automation-for-secure-data-transformation/assets/step-01.png" alt="A bashscript named base64script.sh that takes input from afile named passwords and outputs base 64 encoded passwords stored to file named encodedoutput.txt" loading="lazy">
+          </a>
+        </figure>
+
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">Ref 2: Error handling: when non existent input file sadfsaf is used as input the error message “file does not exist” is displayed and script terminates.</figcaption>
+          <a class="evidence-link" href="../content/projects/portable-bash-automation-for-secure-data-transformation/assets/step-02.png" data-evidence-link data-caption="Ref 2: Error handling: when non existent input file sadfsaf is used as input the error message “file does not exist” is displayed and script terminates.">
+            <img src="../content/projects/portable-bash-automation-for-secure-data-transformation/assets/step-02.png" alt="Error handling: when non existent input file sadfsaf is used as input the error message “file does not exist” is displayed and script terminates." loading="lazy">
+          </a>
+        </figure></article>
+        </div>
+      </section>
+    </main>
+    <dialog class="lightbox" data-lightbox>
+      <img src="" alt="" data-lightbox-image>
+      <footer>
+        <p data-lightbox-caption></p>
+        <button type="button" onclick="this.closest('dialog').close()">Close</button>
+      </footer>
+    </dialog>
+    
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span data-current-year></span> Elvis Njau. Built for evidence-led security work.</span>
+      <div class="footer-links">
+        <a href="https://github.com/elvis2121" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/elvis-njau-aa169695" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="mailto:elvisnjau@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>
