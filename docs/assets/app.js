@@ -27,22 +27,57 @@ if (menuButton && siteNav) {
 
 const filterButtons = document.querySelectorAll("[data-project-filter]");
 const projectCards = document.querySelectorAll("[data-project-category]");
+const projectMoreButton = document.querySelector("[data-project-more]");
+const projectLimit = 4;
+let activeProjectFilter = "All";
+let projectsExpanded = false;
+
+const updateProjects = () => {
+  const matchingCards = [...projectCards].filter(
+    (card) =>
+      activeProjectFilter === "All" ||
+      card.dataset.projectCategory === activeProjectFilter
+  );
+
+  projectCards.forEach((card) => {
+    const matchingIndex = matchingCards.indexOf(card);
+    const visible =
+      matchingIndex !== -1 &&
+      (projectsExpanded || matchingIndex < projectLimit);
+    card.hidden = !visible;
+  });
+
+  if (!projectMoreButton) return;
+
+  const hiddenProjectCount = Math.max(matchingCards.length - projectLimit, 0);
+  projectMoreButton.hidden = hiddenProjectCount === 0;
+  projectMoreButton.setAttribute("aria-expanded", String(projectsExpanded));
+  projectMoreButton.textContent = projectsExpanded
+    ? "Show less"
+    : `Read more (${hiddenProjectCount})`;
+};
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    const filter = button.dataset.projectFilter;
+    activeProjectFilter = button.dataset.projectFilter;
+    projectsExpanded = false;
+
     filterButtons.forEach((item) => {
       const active = item === button;
       item.classList.toggle("is-active", active);
       item.setAttribute("aria-pressed", String(active));
     });
 
-    projectCards.forEach((card) => {
-      const visible = filter === "All" || card.dataset.projectCategory === filter;
-      card.hidden = !visible;
-    });
+    updateProjects();
   });
 });
+
+projectMoreButton?.addEventListener("click", () => {
+  projectsExpanded = !projectsExpanded;
+  updateProjects();
+});
+
+updateProjects();
 
 const observer = "IntersectionObserver" in window
   ? new IntersectionObserver(

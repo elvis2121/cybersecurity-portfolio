@@ -1,7 +1,7 @@
 [
   {
     "slug": "network-forensics-and-snort-detection-engineering",
-    "category": "Detection & Network",
+    "category": "Network Security",
     "featured": true,
     "order": 1
   },
@@ -13,37 +13,37 @@
   },
   {
     "slug": "python-reconnaissance-automation",
-    "category": "Automation",
+    "category": "Scripting",
     "featured": true,
     "order": 3
   },
   {
     "slug": "wireless-security-assessment-lab-series",
-    "category": "Detection & Network",
+    "category": "Network Security",
     "featured": true,
     "order": 4
   },
   {
     "slug": "owasp-crapi-web-and-api-security-assessment",
-    "category": "Application Security",
+    "category": "Web & Mobile Application Security",
     "featured": true,
     "order": 5
   },
   {
     "slug": "vulnbank-web-api-and-mobile-security-assessment",
-    "category": "Application Security",
+    "category": "Web & Mobile Application Security",
     "featured": true,
     "order": 6
   },
   {
     "slug": "android-application-security-assessment-beetlebug",
-    "category": "Application Security",
+    "category": "Web & Mobile Application Security",
     "featured": false,
     "order": 7
   },
   {
     "slug": "web-and-api-vulnerability-validation-lab",
-    "category": "Application Security",
+    "category": "Web & Mobile Application Security",
     "featured": false,
     "order": 8
   },
@@ -55,7 +55,7 @@
   },
   {
     "slug": "portable-bash-automation-for-secure-data-transformation",
-    "category": "Automation",
+    "category": "Scripting",
     "featured": false,
     "order": 10
   },

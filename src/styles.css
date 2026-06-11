@@ -642,6 +642,21 @@ button {
   display: none;
 }
 
+.projects-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.projects-more-button {
+  min-width: 154px;
+  cursor: pointer;
+}
+
+.projects-more-button[hidden] {
+  display: none;
+}
+
 .project-thumb {
   position: relative;
   overflow: hidden;

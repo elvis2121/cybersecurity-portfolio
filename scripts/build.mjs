@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -10,6 +11,11 @@ const outputDir = path.join(root, "docs");
 
 const profile = JSON.parse(await fs.readFile(path.join(srcDir, "profile.json"), "utf8"));
 const projectMetadata = JSON.parse(await fs.readFile(path.join(srcDir, "projects.json"), "utf8"));
+const assetVersion = createHash("sha256")
+  .update(await fs.readFile(path.join(srcDir, "styles.css")))
+  .update(await fs.readFile(path.join(srcDir, "app.js")))
+  .digest("hex")
+  .slice(0, 10);
 
 const escapeHtml = (value = "") =>
   value
@@ -149,8 +155,8 @@ const pageDocument = ({ title, description, body, assetPrefix = "." }) => `<!doc
   <title>${escapeHtml(title)}</title>
   <link rel="icon" type="image/png" sizes="64x64" href="${assetPrefix}/assets/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="${assetPrefix}/assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="${assetPrefix}/assets/styles.css">
-  <script src="${assetPrefix}/assets/app.js" defer></script>
+  <link rel="stylesheet" href="${assetPrefix}/assets/styles.css?v=${assetVersion}">
+  <script src="${assetPrefix}/assets/app.js?v=${assetVersion}" defer></script>
 </head>
 <body>
 ${body}
@@ -269,8 +275,13 @@ const homeBody = `
             )
             .join("")}
         </div>
-        <div class="project-grid">
+        <div class="project-grid" id="project-grid">
           ${projects.map(projectCard).join("")}
+        </div>
+        <div class="projects-more">
+          <button class="button button-secondary projects-more-button" type="button" aria-controls="project-grid" aria-expanded="false" data-project-more hidden>
+            Read more
+          </button>
         </div>
       </div>
     </section>
