@@ -1,14 +1,14 @@
 {
   "name": "Elvis Njau",
-  "title": "Junior Cybersecurity Engineer",
+  "title": "Cybersecurity Engineer",
   "specialty": "SOC Analyst",
   "location": "Nairobi, Kenya",
   "availability": "Open to remote and on-site SOC analyst roles",
   "email": "elvisnjau@gmail.com",
   "github": "https://github.com/elvis2121",
   "linkedin": "https://www.linkedin.com/in/elvis-njau-aa169695",
-  "summary": "Results-driven junior cybersecurity engineer focused on blue-team defense, alert investigation, threat hunting, incident response, and detection engineering. I combine hands-on security labs with four years of IT administration and four years of technical support experience.",
-  "objective": "I am looking for a junior SOC analyst opportunity where I can investigate alerts, analyze endpoint and network telemetry, document incidents clearly, and help improve practical detection coverage.",
+  "summary": "Results-driven cybersecurity engineer focused on blue-team defense, alert investigation, threat hunting, incident response, and detection engineering. I combine hands-on security labs with years of cybersecurity experience.",
+  "objective": "I am looking for a SOC analyst opportunity where I can investigate alerts, analyze endpoint and network telemetry, document incidents clearly, and help improve practical detection coverage.",
   "competencies": [
     "SOC alert triage and investigation",
     "Threat hunting and intelligence",

@@ -1,6 +1,6 @@
 # Elvis Njau Cybersecurity Portfolio
 
-A responsive static portfolio for SOC analyst and junior cybersecurity engineering roles.
+A responsive static portfolio for SOC analyst and cybersecurity engineering roles.
 
 ## Local development
 

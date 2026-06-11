@@ -319,7 +319,7 @@ const homeBody = `
         <div class="opportunity-grid">
           <div>
             <p class="section-kicker">What I'm looking for</p>
-            <h2 class="section-title">A junior SOC role with room to <span class="accent-text">investigate and grow.</span></h2>
+            <h2 class="section-title">A SOC role with room to <span class="accent-text">investigate and grow.</span></h2>
             <p class="section-copy">${escapeHtml(profile.objective)}</p>
           </div>
           <ul class="opportunity-list">
@@ -337,7 +337,7 @@ const homeBody = `
       <div class="container contact-card" data-reveal>
         <div>
           <p class="section-kicker">Let's connect</p>
-          <h2>Hiring for a junior SOC analyst?</h2>
+          <h2>Hiring for a SOC analyst?</h2>
           <p>${escapeHtml(profile.location)} · ${escapeHtml(profile.availability)}</p>
         </div>
         <div class="button-row">
@@ -503,8 +503,8 @@ await fs.copyFile(path.join(srcDir, "app.js"), path.join(outputDir, "assets", "a
 await fs.writeFile(
   path.join(outputDir, "index.html"),
   pageDocument({
-    title: `${profile.name} | Junior Cybersecurity Engineer & SOC Analyst`,
-    description: `${profile.name} is a junior cybersecurity engineer and SOC analyst in ${profile.location}. Explore published security projects, skills, certifications, and experience.`,
+    title: `${profile.name} | Cybersecurity Engineer & SOC Analyst`,
+    description: `${profile.name} is a cybersecurity engineer and SOC analyst in ${profile.location}. Explore published security projects, skills, certifications, and experience.`,
     body: homeBody
   })
 );
