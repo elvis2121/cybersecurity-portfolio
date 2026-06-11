@@ -170,9 +170,9 @@ const projectCard = (project, index) => `
   </article>`;
 
 const principles = [
-  ["01", "Investigate with evidence", "Use packet captures, logs, endpoint artifacts, and reproducible test results before drawing conclusions."],
-  ["02", "Communicate the signal", "Turn technical observations into clear impact, priority, and next actions for the wider team."],
-  ["03", "Improve the workflow", "Automate repeatable tasks and feed lessons from each investigation back into detection and response."]
+  ["01", "Engineer resilient defenses", "Design layered controls, segmented environments, and dependable telemetry that reduce risk across infrastructure, endpoints, networks, applications, and cloud platforms."],
+  ["02", "Lead response and risk decisions", "Guide investigations, validate threats and vulnerabilities, and translate technical evidence into prioritized remediation and clear direction for stakeholders."],
+  ["03", "Scale security capability", "Automate repeatable workflows, improve detection and response playbooks, mentor technical teams, and turn operational lessons into stronger controls."]
 ];
 
 const homeBody = `
@@ -213,8 +213,8 @@ const homeBody = `
       <div class="container about-grid">
         <aside class="about-aside" data-reveal>
           <p class="section-kicker">About Elvis</p>
-          <h2 class="section-title">Security work grounded in <span class="accent-text">curiosity and proof.</span></h2>
-          <p class="section-copy">${escapeHtml(profile.objective)}</p>
+          <h2 class="section-title">Security engineering grounded in <span class="accent-text">strategy and proof.</span></h2>
+          <p class="section-copy">${escapeHtml(profile.aboutSenior)}</p>
         </aside>
         <div class="principles">
           ${principles
@@ -287,6 +287,7 @@ const homeBody = `
                     <h3>${escapeHtml(job.role)}</h3>
                     <p class="timeline-company">${escapeHtml(job.company)}</p>
                     <ul>${job.details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join("")}</ul>
+                    ${job.impact ? `<p class="timeline-impact"><strong>Impact</strong>${escapeHtml(job.impact)}</p>` : ""}
                   </div>
                 </article>`
             )
@@ -314,20 +315,16 @@ const homeBody = `
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="career-target">
       <div class="container opportunity-card" data-reveal>
         <div class="opportunity-grid">
           <div>
             <p class="section-kicker">What I'm looking for</p>
-            <h2 class="section-title">A SOC role with room to <span class="accent-text">investigate and grow.</span></h2>
-            <p class="section-copy">${escapeHtml(profile.objective)}</p>
+            <h2 class="section-title">${escapeHtml(profile.careerTarget.headingLead)} <span class="accent-text">${escapeHtml(profile.careerTarget.headingAccent)}</span></h2>
+            <p class="section-copy">${escapeHtml(profile.careerTarget.summary)}</p>
           </div>
           <ul class="opportunity-list">
-            <li>Alert monitoring, triage, escalation, and incident documentation</li>
-            <li>Network, endpoint, identity, and cloud telemetry analysis</li>
-            <li>Threat hunting, IOC enrichment, and MITRE ATT&CK mapping</li>
-            <li>Detection tuning, playbook improvement, and analyst automation</li>
-            <li>Collaborative learning in a disciplined blue-team environment</li>
+            ${profile.careerTarget.priorities.map((priority) => `<li>${escapeHtml(priority)}</li>`).join("")}
           </ul>
         </div>
       </div>

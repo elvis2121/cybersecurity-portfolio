@@ -9,6 +9,19 @@
   "linkedin": "https://www.linkedin.com/in/elvis-njau-aa169695",
   "summary": "Results-driven cybersecurity engineer focused on blue-team defense, alert investigation, threat hunting, incident response, and detection engineering. I combine hands-on security labs with years of cybersecurity experience.",
   "objective": "I am looking for a SOC analyst opportunity where I can investigate alerts, analyze endpoint and network telemetry, document incidents clearly, and help improve practical detection coverage.",
+  "aboutSenior": "I design and improve security capabilities across infrastructure, endpoints, networks, applications, and cloud environments, combining hands-on engineering with investigation leadership, risk-based decisions, automation, and clear technical direction.",
+  "careerTarget": {
+    "headingLead": "A senior cybersecurity role with scope to",
+    "headingAccent": "engineer, lead, and strengthen defenses.",
+    "summary": "I am seeking a senior cybersecurity engineering opportunity where I can design resilient security controls, improve detection and response capabilities, guide technical investigations, and reduce risk across infrastructure, endpoints, networks, applications, and cloud environments.",
+    "priorities": [
+      "Security architecture, network segmentation, and control design",
+      "SIEM and detection engineering across endpoint, server, network, and cloud telemetry",
+      "Incident response, threat hunting, DFIR, and investigation leadership",
+      "Vulnerability management, system hardening, and security control validation",
+      "Security automation, playbook development, technical mentoring, and continuous improvement"
+    ]
+  },
   "competencies": [
     "SOC alert triage and investigation",
     "Threat hunting and intelligence",
@@ -84,28 +97,55 @@
   ],
   "experience": [
     {
-      "role": "IT Administrator",
-      "company": "Minthub Limited",
-      "period": "2020 - 2024",
+      "role": "Senior Cybersecurity Engineer",
+      "company": "Mexil Tech Consultancy Limited",
+      "period": "2023 - 2025",
       "details": [
-        "Managed Windows and Linux servers, network devices, and employee workstations to maintain reliable operations.",
-        "Implemented system hardening and patch-management practices to reduce infrastructure risk.",
-        "Optimized network configurations and firewall rules to improve connectivity and security posture.",
-        "Automated administration and monitoring tasks with PowerShell and Bash.",
-        "Provided advanced troubleshooting and technical support across business workflows."
-      ]
+        "Designed and deployed an automated threat-detection and network-visibility pipeline inside a multi-segment virtualized environment; integrated pfSense with Zeek and Snort to capture deep-packet telemetry and network intrusion indicators.",
+        "Engineered log-forwarding and ingestion pipelines from Windows Server, Linux endpoints, and network appliances into centralized Wazuh and Splunk monitoring platforms.",
+        "Authored custom detection rules, correlated endpoint and network events, and tuned false positives to improve the fidelity and usability of security operations workflows.",
+        "Built repeatable investigation and incident-triage playbooks, strengthening analyst consistency and accelerating evidence collection, enrichment, classification, and escalation.",
+        "Maintained an isolated VMware and Docker security lab for adversary emulation, malware-containment testing, control validation, and safe reproduction of attack paths."
+      ],
+      "impact": "Unified 5 security platforms, 3 telemetry-source categories, and 2 network detection engines into one repeatable detection and triage workflow."
     },
     {
-      "role": "IT Support Specialist",
-      "company": "Kendas Hotels Limited",
-      "period": "2016 - 2020",
+      "role": "Cybersecurity Analyst",
+      "company": "Mexil Tech Consultancy Limited",
+      "period": "2021 - 2022",
       "details": [
-        "Supported Point of Sale and Property Management systems in a service-critical environment.",
-        "Resolved hardware and software issues for staff and guests while maintaining operational continuity.",
-        "Managed workstation security, configuration, and software deployment.",
-        "Executed backup and recovery procedures for sensitive business information.",
-        "Coordinated IT asset maintenance, upgrades, and vendor relationships."
-      ]
+        "Monitored and investigated endpoint, server, and network security events; correlated indicators and documented findings using structured incident-classification and escalation workflows.",
+        "Improved security posture through firewall-rule reviews, patch management, system hardening, access-control checks, and vulnerability remediation across Windows and Linux environments.",
+        "Automated recurring monitoring, log parsing, IOC checks, and administrative tasks with Bash and PowerShell to reduce manual effort and improve response consistency.",
+        "Supported risk assessments and control reviews aligned with NIST CSF and ISO 27001 principles, translating technical observations into clear remediation actions."
+      ],
+      "impact": "Automated 4 recurring security workflow categories and extended control coverage across Windows, Linux, network, and governance environments."
+    },
+    {
+      "role": "IT Head of Department",
+      "company": "Kendas Hotels Limited",
+      "period": "2019 - 2020",
+      "details": [
+        "Led day-to-day IT operations for a service-critical hotel environment spanning servers, network infrastructure, employee endpoints, Point of Sale, and Property Management systems.",
+        "Established secure administration practices for user access, patching, backups, endpoint configuration, firewall rules, and vendor-supported business systems.",
+        "Centralized operational monitoring and incident escalation across infrastructure and business applications, improving visibility into outages, security events, and recurring support issues.",
+        "Developed recovery procedures and support playbooks for priority systems, strengthening continuity and accelerating coordinated triage during service-impacting incidents.",
+        "Managed technology vendors, asset lifecycles, upgrades, and departmental priorities while communicating technical risk and operational impact to business leadership."
+      ],
+      "impact": "Directed technology operations across 5 business-critical domains and formalized 3 resilience controls: monitoring, incident escalation, and recovery playbooks."
+    },
+    {
+      "role": "Systems Administrator",
+      "company": "Kendas Hotels Limited",
+      "period": "2016 - 2018",
+      "details": [
+        "Administered Windows and Linux systems, network appliances, employee workstations, and hotel business applications to maintain availability, performance, and secure access.",
+        "Implemented routine patching, account provisioning, endpoint hardening, malware protection, backup verification, and configuration controls across the environment.",
+        "Collected and reviewed system, application, and network logs to troubleshoot faults, identify suspicious activity, and provide evidence for escalated investigations.",
+        "Automated repeatable maintenance and reporting tasks with scripts and standardized checklists, improving consistency across system administration workflows.",
+        "Executed backup and recovery procedures, software deployments, hardware maintenance, and advanced user support while preserving operational continuity."
+      ],
+      "impact": "Supported 4 infrastructure layers and standardized 5 core administration controls across patching, identity, endpoints, backups, and configuration management."
     }
   ],
   "attributes": [

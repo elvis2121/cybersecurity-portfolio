@@ -769,6 +769,26 @@ button {
   margin-top: 7px;
 }
 
+.timeline-impact {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  margin: 20px 0 0;
+  padding: 14px 16px;
+  border-left: 2px solid var(--cyan);
+  background: color-mix(in srgb, var(--cyan) 7%, transparent);
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.timeline-impact strong {
+  color: var(--cyan);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
