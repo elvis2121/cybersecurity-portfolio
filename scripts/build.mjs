@@ -147,6 +147,8 @@ const pageDocument = ({ title, description, body, assetPrefix = "." }) => `<!doc
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:type" content="website">
   <title>${escapeHtml(title)}</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="${assetPrefix}/assets/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="${assetPrefix}/assets/apple-touch-icon.png">
   <link rel="stylesheet" href="${assetPrefix}/assets/styles.css">
   <script src="${assetPrefix}/assets/app.js" defer></script>
 </head>
