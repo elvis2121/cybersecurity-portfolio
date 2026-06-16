@@ -213,7 +213,7 @@ const homeBody = `
         <div class="stat"><strong>${projects.length}</strong><span>Published labs</span></div>
         <div class="stat"><strong>${projects.reduce((total, project) => total + project.screenshotCount, 0)}+</strong><span>Evidence captures</span></div>
         <div class="stat"><strong>8 yrs</strong><span>IT experience</span></div>
-        <div class="stat"><strong>${profile.certifications.length}</strong><span>Certifications</span></div>
+        <div class="stat"><strong>${profile.certifications.length}</strong><span>Credentials</span></div>
       </div>
     </section>
 
@@ -312,7 +312,7 @@ const homeBody = `
     <section class="section projects-section" id="certifications">
       <div class="container">
         <p class="section-kicker">Continuous learning</p>
-        <h2 class="section-title">Cybersecurity <span class="accent-text">certifications.</span></h2>
+        <h2 class="section-title">Cybersecurity <span class="accent-text">credentials.</span></h2>
         <div class="cert-grid">
           ${profile.certifications
             .map(

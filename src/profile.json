@@ -80,9 +80,14 @@
   ],
   "certifications": [
     {
-      "name": "AfricaHackon Cybersecurity Certificate",
-      "issuer": "AfricaHackon",
-      "date": "June 2026"
+      "name": "Bachelor of Science in IT",
+      "issuer": "Academic qualification",
+      "date": "July 2015"
+    },
+    {
+      "name": "Google Cybersecurity Professional Certificate",
+      "issuer": "Google / Coursera",
+      "date": "December 2024"
     },
     {
       "name": "Security Analyst Level 1 (SAL1)",
@@ -90,9 +95,9 @@
       "date": "August 2025"
     },
     {
-      "name": "Google Cybersecurity Professional Certificate",
-      "issuer": "Google / Coursera",
-      "date": "December 2024"
+      "name": "AfricaHackon Cybersecurity Certificate",
+      "issuer": "AfricaHackon",
+      "date": "June 2026"
     }
   ],
   "experience": [
