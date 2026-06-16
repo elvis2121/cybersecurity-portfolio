@@ -45,7 +45,12 @@
     {
       "title": "Network & Detection",
       "description": "Packet analysis, IDS/IPS rule authoring, wireless assessment, MITM detection, and investigation of suspicious network activity.",
-      "tools": ["Wireshark", "Snort", "Suricata", "Nmap", "Kismet", "Bettercap"]
+      "tools": ["Wireshark", "Snort", "Suricata", "Nmap", "Kismet", "Bettercap", "PCAP analysis", "FTP/HTTP analysis", "Nmap traffic patterns"]
+    },
+    {
+      "title": "Wireless Security",
+      "description": "Controlled wireless reconnaissance, monitor-mode workflows, handshake capture, WPS testing, evil-twin simulation, and password-audit labs.",
+      "tools": ["Aircrack-ng", "Airmon-ng", "Airodump-ng", "Aireplay-ng", "Wifiphisher", "Reaver", "Hashcat", "Wifite2"]
     },
     {
       "title": "Endpoint & DFIR",
@@ -55,17 +60,22 @@
     {
       "title": "Application Security",
       "description": "OWASP-aligned web, API, and Android testing across authorization, authentication, injection, transport, storage, and client-side controls.",
-      "tools": ["Burp Suite", "OWASP ZAP", "Postman", "JADX", "ADB", "MobSF"]
+      "tools": ["Burp Suite", "Burp Intruder", "OWASP ZAP", "Postman", "Gobuster", "Wappalyzer", "JWT tooling", "JADX", "ADB", "Logcat", "SQLite Browser", "MobSF", "Genymotion", "Android emulator", "curl", "jq", "manual API testing"]
     },
     {
       "title": "Reconnaissance",
       "description": "Passive and active discovery for target profiling, subdomain enumeration, DNS analysis, and attack-surface mapping.",
-      "tools": ["Shodan", "Maltego", "theHarvester", "Recon-ng", "Subfinder", "httpx"]
+      "tools": ["Shodan", "Maltego", "theHarvester", "Recon-ng", "Subfinder", "httpx", "DNSDumpster", "DNSRecon", "Sublist3r", "DNS analysis", "host validation"]
     },
     {
       "title": "Automation & SOAR",
       "description": "Security scripts, log parsing, IOC detection, API integrations, alert enrichment, ticketing pipelines, and repeatable analyst workflows.",
-      "tools": ["Python", "Bash", "PowerShell", "n8n", "REST APIs"]
+      "tools": ["Python", "Python 3", "Bash", "PowerShell", "n8n", "REST APIs", "argparse", "pathlib", "subprocess", "base64", "OpenSSL", "POSIX file controls"]
+    },
+    {
+      "title": "Web & API Engineering",
+      "description": "Static and dynamic application builds, REST API development, front-end interactions, backend services, test automation, and deployment support.",
+      "tools": ["HTML", "CSS", "JavaScript", "jQuery", "Bootstrap", "Node.js", "Flask", "Flask-RESTful", "Flask-HTTPAuth", "MySQL", "PostgreSQL", "Gunicorn", "pytest", "Coverage", "Travis CI", "Coveralls", "Git", "Chrome DevTools", "Atom"]
     },
     {
       "title": "Cloud & GRC",
@@ -75,7 +85,7 @@
     {
       "title": "Adversary Simulation",
       "description": "Controlled Windows and Active Directory exercises, privilege escalation, post-exploitation, and detection validation in authorized labs.",
-      "tools": ["Metasploit", "NetExec", "Responder", "Sliver", "Empire"]
+      "tools": ["Metasploit", "msfvenom", "Meterpreter", "multi/handler", "ngrok", "Windows VM", "Kali Linux", "NetExec", "Responder", "Sliver", "Empire"]
     }
   ],
   "certifications": [
