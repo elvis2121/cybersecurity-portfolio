@@ -64,5 +64,11 @@
     "category": "Engineering",
     "featured": false,
     "order": 11
+  },
+  {
+    "slug": "soc-automation-and-detection-engineering-homelab",
+    "category": "Detection Engineering",
+    "featured": false,
+    "order": 12
   }
 ]
