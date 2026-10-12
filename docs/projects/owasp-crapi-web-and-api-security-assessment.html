@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#070914">
-  <meta name="description" content="Executed a structured security assessment against a local OWASP crAPI deployment and translated technical proof into prioritized, business-readable findings.">
+  <meta name="description" content="Executed a structured security assessment against a local OWASP crAPI deployment and translated technical proof into ten prioritized, business-readable findings.">
   <meta property="og:title" content="OWASP crAPI Web and API Security Assessment | Elvis Njau">
-  <meta property="og:description" content="Executed a structured security assessment against a local OWASP crAPI deployment and translated technical proof into prioritized, business-readable findings.">
+  <meta property="og:description" content="Executed a structured security assessment against a local OWASP crAPI deployment and translated technical proof into ten prioritized, business-readable findings.">
   <meta property="og:type" content="website">
   <title>OWASP crAPI Web and API Security Assessment | Elvis Njau</title>
   <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon.png">
@@ -22,7 +22,7 @@
       <div class="container nav-shell">
         <a class="brand" href="../" aria-label="Elvis Njau home">
           <span class="brand-mark" aria-hidden="true">EN</span>
-          <span class="brand-name">Elvis Njau / SOC Analyst</span>
+          <span class="brand-name">Elvis Njau / SOC Analyst (L2)</span>
         </a>
         <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-button>
           <span aria-hidden="true"></span>
@@ -45,7 +45,7 @@
             <div data-reveal>
               <p class="section-kicker">Web &amp; Mobile Application Security case study</p>
               <h1>OWASP crAPI Web and API Security Assessment</h1>
-              <p class="project-objective">Executed a structured security assessment against a local OWASP crAPI deployment and translated technical proof into prioritized, business-readable findings.</p>
+              <p class="project-objective">Executed a structured security assessment against a local OWASP crAPI deployment and translated technical proof into ten prioritized, business-readable findings.</p>
               <div class="button-row">
                 <a class="button" href="https://github.com/elvis2121/owasp-crapi-web-and-api-security-assessment" target="_blank" rel="noreferrer">View GitHub repository</a>
                 <a class="button button-secondary" href="../#projects">All projects</a>
@@ -63,7 +63,7 @@
       <section class="container project-summary-grid">
         <article class="summary-card" data-reveal>
           <h2>Skills demonstrated</h2>
-          <ul><li>Enumerated directories and fingerprinted the application stack.</li><li>Manipulated object identifiers to test ownership enforcement.</li><li>Changed a JWT algorithm to none and removed the signature to test verification.</li><li>Sent 50+ invalid login attempts to evaluate throttling and lockout.</li><li>Tested SQL and MongoDB-style payloads and reviewed responses for sensitive disclosure.</li><li>Consolidated duplicate observations into eight unique prioritized findings.</li></ul>
+          <ul><li>Enumerated directories and fingerprinted the application stack.</li><li>Manipulated object identifiers to test ownership enforcement.</li><li>Changed a JWT algorithm to none and removed the signature to test verification.</li><li>Sent 50+ invalid login attempts to evaluate throttling and lockout.</li><li>Tested SQL and MongoDB-style payloads and reviewed responses for sensitive disclosure.</li><li>Documented ten distinct prioritized findings (see Findings Summary); earlier drafts referred to eight after consolidation.</li></ul>
         </article>
         <article class="summary-card" data-reveal>
           <h2>Tools used</h2>
@@ -82,142 +82,142 @@
           </div>
           <article class="report-content">
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 1: Using gobuster to enumerate target 127.0.0.1:9000 the directory with http code 200k are part of the domain. Example: 127.0.0.1:9000/health.</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-01.png" data-evidence-link data-caption="Ref 1: Using gobuster to enumerate target 127.0.0.1:9000 the directory with http code 200k are part of the domain. Example: 127.0.0.1:9000/health.">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-01.png" alt="Using gobuster to enumerate target 127.0.0.1:9000 the directory with http code 200k are part of the domain. Example: 127.0.0.1:9000/health." loading="lazy">
+          <figcaption class="evidence-caption">Ref 1: Gobuster enumerates the crAPI host on 127.0.0.1:9000 and identifies live paths such as /health returning HTTP 200.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-01.png" data-evidence-link data-caption="Ref 1: Gobuster enumerates the crAPI host on 127.0.0.1:9000 and identifies live paths such as /health returning HTTP 200.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-01.png" alt="Gobuster enumerates the crAPI host on 127.0.0.1:9000 and identifies live paths such as /health returning HTTP 200." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 2: Wappalyzer shows the technologies used to build the crAPI web application.</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-02.png" data-evidence-link data-caption="Ref 2: Wappalyzer shows the technologies used to build the crAPI web application.">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-02.png" alt="Wappalyzer shows the technologies used to build the crAPI web application." loading="lazy">
+          <figcaption class="evidence-caption">Ref 2: Wappalyzer fingerprints the crAPI web application and identifies the front-end and supporting technologies exposed in the browser.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-02.png" data-evidence-link data-caption="Ref 2: Wappalyzer fingerprints the crAPI web application and identifies the front-end and supporting technologies exposed in the browser.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-02.png" alt="Wappalyzer fingerprints the crAPI web application and identifies the front-end and supporting technologies exposed in the browser." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 3: Vulnerabilities: By changing the user id value from 8 to 3. I am able to access other users data.</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-03.png" data-evidence-link data-caption="Ref 3: Vulnerabilities: By changing the user id value from 8 to 3. I am able to access other users data.">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-03.png" alt="Vulnerabilities: By changing the user id value from 8 to 3. I am able to access other users data." loading="lazy">
+          <figcaption class="evidence-caption">Ref 3: Burp Repeater shows that changing the user identifier from 8 to 3 returns another user's data, demonstrating broken object-level authorization.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-03.png" data-evidence-link data-caption="Ref 3: Burp Repeater shows that changing the user identifier from 8 to 3 returns another user's data, demonstrating broken object-level authorization.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-03.png" alt="Burp Repeater shows that changing the user identifier from 8 to 3 returns another user's data, demonstrating broken object-level authorization." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 4: After login a JWT token is provided by the server.</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-04.png" data-evidence-link data-caption="Ref 4: After login a JWT token is provided by the server.">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-04.png" alt="After login a JWT token is provided by the server." loading="lazy">
+          <figcaption class="evidence-caption">Ref 4: Burp captures the login response returning access and refresh JWTs for the authenticated session.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-04.png" data-evidence-link data-caption="Ref 4: Burp captures the login response returning access and refresh JWTs for the authenticated session.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-04.png" alt="Burp captures the login response returning access and refresh JWTs for the authenticated session." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 5: After login a JWT token is provided by the server.</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-05.png" data-evidence-link data-caption="Ref 5: After login a JWT token is provided by the server.">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-05.png" alt="After login a JWT token is provided by the server." loading="lazy">
+          <figcaption class="evidence-caption">Ref 5: The JWT decoder exposes token header and claim values, including role and account identifiers, before tampering tests.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-05.png" data-evidence-link data-caption="Ref 5: The JWT decoder exposes token header and claim values, including role and account identifiers, before tampering tests.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-05.png" alt="The JWT decoder exposes token header and claim values, including role and account identifiers, before tampering tests." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 6: the encryption is changed to none and the signature is removed.</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-06.png" data-evidence-link data-caption="Ref 6: the encryption is changed to none and the signature is removed.">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-06.png" alt="the encryption is changed to none and the signature is removed." loading="lazy">
+          <figcaption class="evidence-caption">Ref 6: The JWT is modified by setting the algorithm to none and removing the signature to test token integrity validation.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-06.png" data-evidence-link data-caption="Ref 6: The JWT is modified by setting the algorithm to none and removing the signature to test token integrity validation.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-06.png" alt="The JWT is modified by setting the algorithm to none and removing the signature to test token integrity validation." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 7: The server responds to the modified JWT token. Vulnerabilities: The server does not verify the JWT tokens therefore when the token is modified the server does not detect this action.</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-07.png" data-evidence-link data-caption="Ref 7: The server responds to the modified JWT token. Vulnerabilities: The server does not verify the JWT tokens therefore when the token is modified the server does not detect this action.">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-07.png" alt="The server responds to the modified JWT token. Vulnerabilities: The server does not verify the JWT tokens therefore when the token is modified the server does not detect this action." loading="lazy">
+          <figcaption class="evidence-caption">Ref 7: Burp Repeater shows the API accepting the unsigned modified JWT and returning a normal response, confirming missing JWT signature verification.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-07.png" data-evidence-link data-caption="Ref 7: Burp Repeater shows the API accepting the unsigned modified JWT and returning a normal response, confirming missing JWT signature verification.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-07.png" alt="Burp Repeater shows the API accepting the unsigned modified JWT and returning a normal response, confirming missing JWT signature verification." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 8: bruteforcing the password field using a wordlist and burpsuite intruder</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-08.png" data-evidence-link data-caption="Ref 8: bruteforcing the password field using a wordlist and burpsuite intruder">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-08.png" alt="bruteforcing the password field using a wordlist and burpsuite intruder" loading="lazy">
+          <figcaption class="evidence-caption">Ref 8: Burp Intruder is configured to brute-force the login password field with a wordlist against the authentication request.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-08.png" data-evidence-link data-caption="Ref 8: Burp Intruder is configured to brute-force the login password field with a wordlist against the authentication request.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-08.png" alt="Burp Intruder is configured to brute-force the login password field with a wordlist against the authentication request." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 9: The server responds to 50 wrong passwords without account lock out. vulnerabilities:</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-09.png" data-evidence-link data-caption="Ref 9: The server responds to 50 wrong passwords without account lock out. vulnerabilities:">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-09.png" alt="The server responds to 50 wrong passwords without account lock out. vulnerabilities:" loading="lazy">
+          <figcaption class="evidence-caption">Ref 9: Intruder results show repeated invalid password attempts returning responses without account lockout or effective throttling.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-09.png" data-evidence-link data-caption="Ref 9: Intruder results show repeated invalid password attempts returning responses without account lockout or effective throttling.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-09.png" alt="Intruder results show repeated invalid password attempts returning responses without account lockout or effective throttling." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 10: Vulnerabilities:</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-10.png" data-evidence-link data-caption="Ref 10: Vulnerabilities:">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-10.png" alt="Vulnerabilities:" loading="lazy">
+          <figcaption class="evidence-caption">Ref 10: Burp Site Map captures /api/v2/messages?limit=50 returning JSON mailbox data from MailHog, identifying an exposed message API.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-10.png" data-evidence-link data-caption="Ref 10: Burp Site Map captures /api/v2/messages?limit=50 returning JSON mailbox data from MailHog, identifying an exposed message API.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-10.png" alt="Burp Site Map captures /api/v2/messages?limit=50 returning JSON mailbox data from MailHog, identifying an exposed message API." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 11: The api endpoint /community/api/v2/community/posts is vulnerable to sql injections.</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-11.png" data-evidence-link data-caption="Ref 11: The api endpoint /community/api/v2/community/posts is vulnerable to sql injections.">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-11.png" alt="The api endpoint /community/api/v2/community/posts is vulnerable to sql injections." loading="lazy">
+          <figcaption class="evidence-caption">Ref 11: A POST to /community/api/v2/community/posts sends a SQL injection payload in the content field and receives HTTP 200.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-11.png" data-evidence-link data-caption="Ref 11: A POST to /community/api/v2/community/posts sends a SQL injection payload in the content field and receives HTTP 200.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-11.png" alt="A POST to /community/api/v2/community/posts sends a SQL injection payload in the content field and receives HTTP 200." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 12: The sql payload on the ‘content’ field responds with the same payload input from the user which means there is no input sanitization.</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-12.png" data-evidence-link data-caption="Ref 12: The sql payload on the ‘content’ field responds with the same payload input from the user which means there is no input sanitization.">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-12.png" alt="The sql payload on the ‘content’ field responds with the same payload input from the user which means there is no input sanitization." loading="lazy">
+          <figcaption class="evidence-caption">Ref 12: The SQL payload is reflected back in the created post content, showing weak input validation on community post creation.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-12.png" data-evidence-link data-caption="Ref 12: The SQL payload is reflected back in the created post content, showing weak input validation on community post creation.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-12.png" alt="The SQL payload is reflected back in the created post content, showing weak input validation on community post creation." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 13: NO SQL INJECTION</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-13.png" data-evidence-link data-caption="Ref 13: NO SQL INJECTION">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-13.png" alt="NO SQL INJECTION" loading="lazy">
+          <figcaption class="evidence-caption">Ref 13: A baseline coupon validation request sends a normal coupon_code value before testing NoSQL-style payload handling.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-13.png" data-evidence-link data-caption="Ref 13: A baseline coupon validation request sends a normal coupon_code value before testing NoSQL-style payload handling.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-13.png" alt="A baseline coupon validation request sends a normal coupon_code value before testing NoSQL-style payload handling." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 14: vulnerability:</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-14.png" data-evidence-link data-caption="Ref 14: vulnerability:">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-14.png" alt="vulnerability:" loading="lazy">
+          <figcaption class="evidence-caption">Ref 14: A NoSQL-style $regex payload against /community/api/v2/coupon/validate-coupon returns a valid coupon, showing improper server-side validation.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-14.png" data-evidence-link data-caption="Ref 14: A NoSQL-style $regex payload against /community/api/v2/coupon/validate-coupon returns a valid coupon, showing improper server-side validation.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-14.png" alt="A NoSQL-style $regex payload against /community/api/v2/coupon/validate-coupon returns a valid coupon, showing improper server-side validation." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 15: When the password field is fuzzed using sql payloads, the server returns a message that has excessive information disclosure</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-15.png" data-evidence-link data-caption="Ref 15: When the password field is fuzzed using sql payloads, the server returns a message that has excessive information disclosure">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-15.png" alt="When the password field is fuzzed using sql payloads, the server returns a message that has excessive information disclosure" loading="lazy">
+          <figcaption class="evidence-caption">Ref 15: Fuzzing the login password field triggers a verbose Spring validation error that discloses backend implementation details.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-15.png" data-evidence-link data-caption="Ref 15: Fuzzing the login password field triggers a verbose Spring validation error that discloses backend implementation details.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-15.png" alt="Fuzzing the login password field triggers a verbose Spring validation error that discloses backend implementation details." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 16: http://127.0.0.1:8888/.env exposes the database configuration.</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-16.png" data-evidence-link data-caption="Ref 16: http://127.0.0.1:8888/.env exposes the database configuration.">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-16.png" alt="http://127.0.0.1:8888/.env exposes the database configuration." loading="lazy">
+          <figcaption class="evidence-caption">Ref 16: Accessing http://127.0.0.1:8888/.env exposes environment variables and database configuration values.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-16.png" data-evidence-link data-caption="Ref 16: Accessing http://127.0.0.1:8888/.env exposes environment variables and database configuration values.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-16.png" alt="Accessing http://127.0.0.1:8888/.env exposes environment variables and database configuration values." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 17: vulnerabilities:</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-17.png" data-evidence-link data-caption="Ref 17: vulnerabilities:">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-17.png" alt="vulnerabilities:" loading="lazy">
+          <figcaption class="evidence-caption">Ref 17: The community posts endpoint returns recent posts and author details for multiple users, exposing data beyond the current user's context.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-17.png" data-evidence-link data-caption="Ref 17: The community posts endpoint returns recent posts and author details for multiple users, exposing data beyond the current user's context.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-17.png" alt="The community posts endpoint returns recent posts and author details for multiple users, exposing data beyond the current user's context." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 18: 4</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-18.png" data-evidence-link data-caption="Ref 18: 4">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-18.png" alt="4" loading="lazy">
+          <figcaption class="evidence-caption">Ref 18: Changing the shop order identifier to /workshop/api/shop/orders/1 returns another customer's order and payment metadata, confirming broken object-level authorization.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-18.png" data-evidence-link data-caption="Ref 18: Changing the shop order identifier to /workshop/api/shop/orders/1 returns another customer's order and payment metadata, confirming broken object-level authorization.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-18.png" alt="Changing the shop order identifier to /workshop/api/shop/orders/1 returns another customer's order and payment metadata, confirming broken object-level authorization." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 19: vulnerabilities</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-19.png" data-evidence-link data-caption="Ref 19: vulnerabilities">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-19.png" alt="vulnerabilities" loading="lazy">
+          <figcaption class="evidence-caption">Ref 19: A second order lookup using /workshop/api/shop/orders/5 returns admin-owned order and card metadata, confirming order records are enumerable.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-19.png" data-evidence-link data-caption="Ref 19: A second order lookup using /workshop/api/shop/orders/5 returns admin-owned order and card metadata, confirming order records are enumerable.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-19.png" alt="A second order lookup using /workshop/api/shop/orders/5 returns admin-owned order and card metadata, confirming order records are enumerable." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 20: Vulnerability:</figcaption>
-          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-20.png" data-evidence-link data-caption="Ref 20: Vulnerability:">
-            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-20.png" alt="Vulnerability:" loading="lazy">
+          <figcaption class="evidence-caption">Ref 20: Burp Proxy captures a MailHog message API response containing a one-time password, showing that exposed mail traffic can reveal account recovery codes.</figcaption>
+          <a class="evidence-link" href="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-20.png" data-evidence-link data-caption="Ref 20: Burp Proxy captures a MailHog message API response containing a one-time password, showing that exposed mail traffic can reveal account recovery codes.">
+            <img src="../content/projects/owasp-crapi-web-and-api-security-assessment/assets/step-20.png" alt="Burp Proxy captures a MailHog message API response containing a one-time password, showing that exposed mail traffic can reveal account recovery codes." loading="lazy">
           </a>
         </figure></article>
         </div>
