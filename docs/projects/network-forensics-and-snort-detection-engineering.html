@@ -11,8 +11,8 @@
   <title>Network Forensics and Snort Detection Engineering | Elvis Njau</title>
   <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="../assets/styles.css?v=85217d1e10">
-  <script src="../assets/app.js?v=85217d1e10" defer></script>
+  <link rel="stylesheet" href="../assets/styles.css?v=35d5e17d68">
+  <script src="../assets/app.js?v=35d5e17d68" defer></script>
 </head>
 <body>
 
@@ -71,6 +71,54 @@
         </article>
       </section>
 
+      
+      <section class="report-shell report-extra">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Project detail</p>
+              <h2 class="section-title">Detection Rules</h2>
+            </div>
+          </div>
+          <article class="report-content"><p>The Snort rules used in this lab are published as text in <a href="https://github.com/elvis2121/network-forensics-and-snort-detection-engineering/blob/main/rules/local.rules" target="_blank" rel="noreferrer"><code>rules/local.rules</code></a>, transcribed from the Ref 5 screenshot and corrected as noted below.</p>
+
+    <div class="md-table-wrap">
+      <table class="md-table">
+        <thead><tr><th>SID</th><th>Message</th><th>Logic</th></tr></thead>
+        <tbody>
+          <tr><td>1000001</td><td>ICMP ECHO REPLY DETECTED</td><td><code>itype:0</code></td></tr>
+<tr><td>1000002</td><td>ICMP ECHO REQUEST DETECTED</td><td><code>itype:8</code></td></tr>
+<tr><td>1000003</td><td>TCP SYN STEALTH SCAN DETECTED</td><td><code>flags:S,12; ack:0; dsize:0</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+<p><strong>Changelog:</strong> The screenshot originally labelled SID 1000001 (itype:0) as &quot;ECHO REQUEST&quot; and SID 1000002 (itype:8) as &quot;ECHO REPLY&quot;. Only the <code>msg</code> strings were corrected so they match ICMP semantics (type 8 = Echo Request, type 0 = Echo Reply). Detection logic is unchanged.</p></article>
+        </div>
+      </section>
+
+      <section class="report-shell report-extra">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Project detail</p>
+              <h2 class="section-title">MITRE ATT&amp;CK Mapping</h2>
+            </div>
+          </div>
+          <article class="report-content">
+    <div class="md-table-wrap">
+      <table class="md-table">
+        <thead><tr><th>Technique</th><th>ID</th><th>Evidence in this lab</th></tr></thead>
+        <tbody>
+          <tr><td>Input Capture: Keylogging</td><td>T1056.001</td><td>Recovered keylogger artifact (Ref 3)</td></tr>
+<tr><td>Exfiltration Over Alternative Protocol (unencrypted FTP)</td><td>T1048.003</td><td>FTP-DATA transfer of keylogger HTML files to attacker host (Ref 2)</td></tr>
+<tr><td>Network Service Discovery</td><td>T1046</td><td>Nmap <code>-sS</code> scan detected by SID 1000003 (Refs 6, 8)</td></tr>
+<tr><td>Remote System Discovery (ping sweep)</td><td>T1018</td><td>ICMP echo traffic detected by SIDs 1000001/1000002 (Refs 7, 9)</td></tr>
+        </tbody>
+      </table>
+    </div></article>
+        </div>
+      </section>
+
       <section class="report-shell">
         <div class="container">
           <div class="report-header">
@@ -84,63 +132,63 @@
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 1: Wireshark Follow TCP Stream exposes the FTP password <code>Nipun@123</code> and confirms upload of the keylogger HTML artifact.</figcaption>
           <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-01.png" data-evidence-link data-caption="Ref 1: Wireshark Follow TCP Stream exposes the FTP password `Nipun@123` and confirms upload of the keylogger HTML artifact.">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-01.png" alt="Wireshark TCP stream showing FTP login success and upload of Keys_2018-11-28_16-04-42.html" loading="lazy">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-01.png" alt="Ref 1: Wireshark Follow TCP Stream exposes the FTP password `Nipun@123` and confirms upload of the keylogger HTML artifact." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 2: Wireshark FTP-DATA object export identifies the two transferred HTML files and their source host.</figcaption>
           <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-02.png" data-evidence-link data-caption="Ref 2: Wireshark FTP-DATA object export identifies the two transferred HTML files and their source host.">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-02.png" alt="Wireshark FTP-DATA object list showing Keys and Web HTML files from 192.168.76.131" loading="lazy">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-02.png" alt="Ref 2: Wireshark FTP-DATA object export identifies the two transferred HTML files and their source host." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 3: Recovered keylogger artifact shows the captured Windows Explorer activity for the Pictures directory.</figcaption>
           <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-03.png" data-evidence-link data-caption="Ref 3: Recovered keylogger artifact shows the captured Windows Explorer activity for the Pictures directory.">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-03.png" alt="Recovered Keys HTML file showing explorer.exe activity in the Pictures directory" loading="lazy">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-03.png" alt="Ref 3: Recovered keylogger artifact shows the captured Windows Explorer activity for the Pictures directory." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 4: Recovered browser artifact records the user <code>nipun</code> opening <code>http://gmail.com/</code> in Microsoft Edge.</figcaption>
           <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-04.png" data-evidence-link data-caption="Ref 4: Recovered browser artifact records the user `nipun` opening `http://gmail.com/` in Microsoft Edge.">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-04.png" alt="Recovered Web HTML file showing Microsoft Edge activity for http://gmail.com/" loading="lazy">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-04.png" alt="Ref 4: Recovered browser artifact records the user `nipun` opening `http://gmail.com/` in Microsoft Edge." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 5: Custom Snort local rules define ICMP echo request, ICMP echo reply, and TCP SYN stealth scan detections.</figcaption>
           <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-05.png" data-evidence-link data-caption="Ref 5: Custom Snort local rules define ICMP echo request, ICMP echo reply, and TCP SYN stealth scan detections.">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-05.png" alt="Snort local.rules file containing ICMP echo and TCP SYN stealth scan alert signatures" loading="lazy">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-05.png" alt="Ref 5: Custom Snort local rules define ICMP echo request, ICMP echo reply, and TCP SYN stealth scan detections." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 6: Snort alert output confirms the TCP SYN stealth scan rule triggers on Nmap <code>-sS</code> traffic.</figcaption>
           <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-06.png" data-evidence-link data-caption="Ref 6: Snort alert output confirms the TCP SYN stealth scan rule triggers on Nmap `-sS` traffic.">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-06.png" alt="Snort terminal output showing repeated TCP SYN stealth scan alerts" loading="lazy">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-06.png" alt="Ref 6: Snort alert output confirms the TCP SYN stealth scan rule triggers on Nmap `-sS` traffic." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 7: Snort alert output verifies the ICMP request and reply rules during ping traffic between the monitored hosts.</figcaption>
           <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-07.png" data-evidence-link data-caption="Ref 7: Snort alert output verifies the ICMP request and reply rules during ping traffic between the monitored hosts.">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-07.png" alt="Snort terminal output showing ICMP echo request and reply alerts" loading="lazy">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-07.png" alt="Ref 7: Snort alert output verifies the ICMP request and reply rules during ping traffic between the monitored hosts." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 8: Nmap SYN scan against <code>192.168.1.11</code> discovers open FTP, SSH, and HTTP services used to validate the Snort scan rule.</figcaption>
           <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-08.png" data-evidence-link data-caption="Ref 8: Nmap SYN scan against `192.168.1.11` discovers open FTP, SSH, and HTTP services used to validate the Snort scan rule.">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-08.png" alt="Nmap SYN scan results for 192.168.1.11 showing open ports 21, 22, and 80" loading="lazy">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-08.png" alt="Ref 8: Nmap SYN scan against `192.168.1.11` discovers open FTP, SSH, and HTTP services used to validate the Snort scan rule." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 9: Ping test against <code>192.168.1.11</code> generates ICMP traffic used to validate echo request and echo reply alerts.</figcaption>
           <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-09.png" data-evidence-link data-caption="Ref 9: Ping test against `192.168.1.11` generates ICMP traffic used to validate echo request and echo reply alerts.">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-09.png" alt="Ping results for 192.168.1.11 showing successful ICMP replies with no packet loss" loading="lazy">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-09.png" alt="Ref 9: Ping test against `192.168.1.11` generates ICMP traffic used to validate echo request and echo reply alerts." loading="lazy">
           </a>
         </figure></article>
         </div>

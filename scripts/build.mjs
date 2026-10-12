@@ -24,11 +24,16 @@ const escapeHtml = (value = "") =>
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
 
-const inlineMarkdown = (value = "") =>
-  escapeHtml(value)
-    .replace(/`([^`]+)`/g, "<code>$1</code>")
-    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-    .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer">$1</a>');
+
+const SKIP_EXTRA_SECTIONS = new Set([
+  "Repository Structure",
+  "GitHub Pages",
+  "Notes",
+  "Objective",
+  "Objectives",
+  "Steps",
+  "Evidence Walkthrough"
+]);
 
 const extractSection = (markdown, heading, nextHeadingPattern = "##|###") => {
   const lines = markdown.split(/\r?\n/);
@@ -52,16 +57,322 @@ const extractBullets = (section) =>
     .filter((line) => line.trim().startsWith("- "))
     .map((line) => line.trim().slice(2).trim());
 
+const splitH2Sections = (markdown) => {
+  const lines = markdown.split(/\r?\n/);
+  const sections = [];
+  let current = null;
+
+  for (const line of lines) {
+    const match = line.match(/^##\s+(.+)$/);
+    if (match) {
+      if (current) sections.push(current);
+      current = { title: match[1].trim(), body: [] };
+      continue;
+    }
+    if (!current) continue;
+    if (/^#\s+/.test(line) && !/^##/.test(line)) continue;
+    current.body.push(line);
+  }
+  if (current) sections.push(current);
+  return sections.map((section) => ({
+    title: section.title,
+    body: section.body.join("\n").trim()
+  }));
+};
+
+const firstParagraph = (text = "") => {
+  const blocks = text
+    .split(/\n\s*\n/)
+    .map((block) => block.trim())
+    .filter(Boolean)
+    .filter((block) => !block.startsWith("#") && !block.startsWith("|") && !block.startsWith("```"));
+  if (!blocks.length) return "";
+  return blocks[0].replace(/\n+/g, " ").trim();
+};
+
+const toolsFromLabStack = (section) => {
+  const tools = [];
+  for (const line of section.split(/\r?\n/)) {
+    if (!line.startsWith("|") || /^\|\s*-+/.test(line) || /^\|\s*Layer\s*\|/i.test(line)) continue;
+    const cells = line.split("|").slice(1, -1).map((cell) => cell.trim());
+    if (cells.length < 2) continue;
+    const componentCell = cells[1];
+    for (const match of componentCell.matchAll(/`([^`]+)`/g)) {
+      tools.push(match[1]);
+    }
+    if (!/`/.test(componentCell)) {
+      componentCell
+        .split(",")
+        .map((part) => part.trim())
+        .filter(Boolean)
+        .forEach((part) => tools.push(part));
+    }
+  }
+  return [...new Set(tools)];
+};
+
+const resolveMarkdownHref = (href, project) => {
+  if (/^(https?:|mailto:|#)/i.test(href)) return href;
+  const cleaned = href.replace(/^\.\//, "").replace(/^\.\.\//, "");
+  return `${project.github}/blob/main/${cleaned}`;
+};
+
+const inlineMarkdown = (value = "", project = null) =>
+  escapeHtml(value)
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => {
+      const target = project ? resolveMarkdownHref(href, project) : href;
+      const external = /^https?:/i.test(target);
+      return `<a href="${escapeHtml(target)}"${external ? ' target="_blank" rel="noreferrer"' : ""}>${label}</a>`;
+    });
+
+const isTableRow = (line) => line.trim().startsWith("|") && line.trim().endsWith("|");
+const isTableDivider = (line) => /^\|\s*:?-+:?\s*(\|\s*:?-+:?\s*)+\|?$/.test(line.trim());
+
+const renderMarkdownTable = (rows, project) => {
+  if (rows.length < 2) return "";
+  const parseRow = (row) =>
+    row
+      .trim()
+      .replace(/^\|/, "")
+      .replace(/\|$/, "")
+      .split("|")
+      .map((cell) => cell.trim());
+  const header = parseRow(rows[0]);
+  const bodyRows = rows.slice(2).map(parseRow);
+  return `
+    <div class="md-table-wrap">
+      <table class="md-table">
+        <thead><tr>${header.map((cell) => `<th>${inlineMarkdown(cell, project)}</th>`).join("")}</tr></thead>
+        <tbody>
+          ${bodyRows
+            .map(
+              (cells) =>
+                `<tr>${cells.map((cell) => `<td>${inlineMarkdown(cell, project)}</td>`).join("")}</tr>`
+            )
+            .join("\n")}
+        </tbody>
+      </table>
+    </div>`;
+};
+
+const renderEvidenceFigure = (project, sourcePath, alt, caption) => {
+  const source = `../content/projects/${project.slug}/${sourcePath.replace(/^\.\//, "")}`;
+  const description = caption || alt || "Project evidence";
+  return `
+        <figure class="evidence-item" data-reveal>
+          <figcaption class="evidence-caption">${inlineMarkdown(description, project)}</figcaption>
+          <a class="evidence-link" href="${source}" data-evidence-link data-caption="${escapeHtml(description)}">
+            <img src="${source}" alt="${escapeHtml(alt || description)}" loading="lazy">
+          </a>
+        </figure>`;
+};
+
+const renderMarkdown = (markdown, project) => {
+  const lines = markdown.split(/\r?\n/);
+  const chunks = [];
+  let listOpen = false;
+  let pendingCaption = "";
+  let inCode = false;
+  let codeLang = "";
+  let codeLines = [];
+  let tableRows = [];
+
+  const closeList = () => {
+    if (listOpen) {
+      chunks.push("</ul>");
+      listOpen = false;
+    }
+  };
+
+  const flushTable = () => {
+    if (!tableRows.length) return;
+    closeList();
+    chunks.push(renderMarkdownTable(tableRows, project));
+    tableRows = [];
+  };
+
+  const flushCode = () => {
+    if (!inCode) return;
+    chunks.push(
+      `<pre class="md-pre"><code class="language-${escapeHtml(codeLang || "text")}">${escapeHtml(
+        codeLines.join("\n")
+      )}</code></pre>`
+    );
+    inCode = false;
+    codeLang = "";
+    codeLines = [];
+  };
+
+  for (const sourceLine of lines) {
+    const raw = sourceLine;
+    const line = raw.trim();
+
+    if (line.startsWith("```")) {
+      flushTable();
+      closeList();
+      if (inCode) {
+        flushCode();
+      } else {
+        if (pendingCaption) {
+          chunks.push(`<p class="evidence-caption">${inlineMarkdown(pendingCaption, project)}</p>`);
+          pendingCaption = "";
+        }
+        inCode = true;
+        codeLang = line.slice(3).trim();
+        codeLines = [];
+      }
+      continue;
+    }
+
+    if (inCode) {
+      codeLines.push(raw.replace(/\n$/, ""));
+      continue;
+    }
+
+    if (!line) {
+      flushTable();
+      closeList();
+      continue;
+    }
+
+    if (isTableRow(line)) {
+      closeList();
+      tableRows.push(line);
+      continue;
+    }
+    flushTable();
+
+    const heading = line.match(/^(#{2,4})\s+(.+)$/);
+    if (heading) {
+      closeList();
+      const level = Math.min(heading[1].length, 3);
+      chunks.push(`<h${level}>${inlineMarkdown(heading[2], project)}</h${level}>`);
+      continue;
+    }
+
+    if (line.startsWith(">")) {
+      closeList();
+      const quote = line.replace(/^>\s?/, "");
+      chunks.push(`<blockquote class="md-quote">${inlineMarkdown(quote, project)}</blockquote>`);
+      continue;
+    }
+
+    const italicCaption = line.match(/^\*(Ref\s+\d+:\s*[\s\S]+)\*$/i);
+    if (italicCaption) {
+      closeList();
+      pendingCaption = italicCaption[1].trim();
+      continue;
+    }
+
+    const boldCaption = line.match(/^\*\*(Ref\s+\d+\.)\*\*\s*(.+)$/i);
+    if (boldCaption) {
+      closeList();
+      pendingCaption = `${boldCaption[1]} ${boldCaption[2]}`.trim();
+      continue;
+    }
+
+    const htmlImage = line.match(/<img\s+[^>]*src="([^"]+)"[^>]*(?:alt="([^"]*)")?[^>]*>/i);
+    if (htmlImage) {
+      closeList();
+      chunks.push(renderEvidenceFigure(project, htmlImage[1], htmlImage[2] || "", pendingCaption));
+      pendingCaption = "";
+      continue;
+    }
+
+    const mdImage = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (mdImage) {
+      closeList();
+      chunks.push(renderEvidenceFigure(project, mdImage[2], mdImage[1], pendingCaption));
+      pendingCaption = "";
+      continue;
+    }
+
+    if (line.startsWith("- ") || line.startsWith("* ")) {
+      if (!listOpen) {
+        chunks.push("<ul>");
+        listOpen = true;
+      }
+      chunks.push(`<li>${inlineMarkdown(line.slice(2), project)}</li>`);
+      continue;
+    }
+
+    if (/^\d+\.\s+/.test(line)) {
+      if (!listOpen) {
+        chunks.push("<ul>");
+        listOpen = true;
+      }
+      chunks.push(`<li>${inlineMarkdown(line.replace(/^\d+\.\s+/, ""), project)}</li>`);
+      continue;
+    }
+
+    closeList();
+    if (pendingCaption) {
+      chunks.push(`<p class="evidence-caption">${inlineMarkdown(pendingCaption, project)}</p>`);
+      pendingCaption = "";
+    }
+    chunks.push(`<p>${inlineMarkdown(line, project)}</p>`);
+  }
+
+  flushTable();
+  flushCode();
+  closeList();
+  if (pendingCaption) {
+    chunks.push(`<p class="evidence-caption">${inlineMarkdown(pendingCaption, project)}</p>`);
+  }
+  return chunks.join("\n");
+};
+
 const parseProject = async (metadata) => {
   const projectDir = path.join(contentDir, "projects", metadata.slug);
   const markdown = await fs.readFile(path.join(projectDir, "README.md"), "utf8");
   const title = markdown.match(/^#\s+(.+)$/m)?.[1]?.trim() ?? metadata.slug;
-  const objective = extractSection(markdown, "## Objective", "###");
-  const skillsSection = extractSection(markdown, "### Skills Learned", "###|##");
-  const toolsSection = extractSection(markdown, "### Tools Used", "##");
-  const steps = extractSection(markdown, "## Steps", "##");
-  const skills = extractBullets(skillsSection);
-  const tools = extractBullets(toolsSection);
+  const h2Sections = splitH2Sections(markdown);
+
+  let objective = extractSection(markdown, "## Objective", "###|##");
+  if (!objective) {
+    const overview = h2Sections.find((section) => section.title === "Overview");
+    objective = overview ? firstParagraph(overview.body) : "";
+  }
+  if (!objective) {
+    const objectives = extractSection(markdown, "## Objectives", "##");
+    const bullets = extractBullets(objectives);
+    objective = bullets.length ? bullets.join(" ") : firstParagraph(markdown.replace(/^#.*\n/, ""));
+  }
+
+  let skills = extractBullets(extractSection(markdown, "### Skills Learned", "###|##"));
+  if (!skills.length) {
+    skills = extractBullets(extractSection(markdown, "## Objectives", "##"));
+  }
+  if (!skills.length) {
+    skills = extractBullets(extractSection(markdown, "## Overview", "##"));
+  }
+
+  let tools = extractBullets(extractSection(markdown, "### Tools Used", "##"));
+  if (!tools.length) {
+    const labStack = extractSection(markdown, "## Lab Stack", "##");
+    tools = toolsFromLabStack(labStack);
+  }
+
+  let steps = extractSection(markdown, "## Steps", "##");
+  let stepsHeading = "Lab evidence and investigation steps.";
+  if (!steps) {
+    steps = extractSection(markdown, "## Evidence Walkthrough", "##");
+    stepsHeading = "Evidence walkthrough.";
+  }
+
+  const extraSections = h2Sections
+    .filter((section) => !SKIP_EXTRA_SECTIONS.has(section.title))
+    .filter((section) => section.body.trim().length > 0)
+    .map((section) => ({
+      title: section.title,
+      html: renderMarkdown(section.body, {
+        ...metadata,
+        github: `${profile.github}/${metadata.slug}`
+      })
+    }));
+
   const assetsDir = path.join(projectDir, "assets");
   let assets = [];
 
@@ -80,11 +391,14 @@ const parseProject = async (metadata) => {
     skills,
     tools,
     steps,
+    stepsHeading,
+    extraSections,
     assets,
     screenshotCount: assets.length,
     github: `${profile.github}/${metadata.slug}`
   };
 };
+
 
 const projects = (await Promise.all(projectMetadata.map(parseProject))).sort(
   (a, b) => a.order - b.order
@@ -360,79 +674,40 @@ const homeBody = `
   ${renderFooter()}
 `;
 
-const renderSteps = (project) => {
-  const lines = project.steps.split(/\r?\n/);
-  const chunks = [];
-  let listOpen = false;
-  let pendingCaption = "";
 
-  const closeList = () => {
-    if (listOpen) {
-      chunks.push("</ul>");
-      listOpen = false;
-    }
-  };
+const renderSteps = (project) => renderMarkdown(project.steps || "", project);
 
-  for (const sourceLine of lines) {
-    const line = sourceLine.trim();
-    if (!line) {
-      closeList();
-      continue;
-    }
-
-    const heading = line.match(/^(#{2,4})\s+(.+)$/);
-    if (heading) {
-      closeList();
-      const level = Math.min(heading[1].length, 3);
-      chunks.push(`<h${level}>${inlineMarkdown(heading[2])}</h${level}>`);
-      continue;
-    }
-
-    const caption = line.match(/^\*(Ref\s+\d+:\s*[\s\S]+)\*$/i);
-    if (caption) {
-      closeList();
-      pendingCaption = caption[1].trim();
-      continue;
-    }
-
-    const image = line.match(/<img\s+[^>]*src="([^"]+)"[^>]*alt="([^"]*)"[^>]*>/i);
-    if (image) {
-      closeList();
-      const source = `../content/projects/${project.slug}/${image[1]}`;
-      const description = pendingCaption || image[2] || "Project evidence";
-      chunks.push(`
-        <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">${inlineMarkdown(description)}</figcaption>
-          <a class="evidence-link" href="${source}" data-evidence-link data-caption="${escapeHtml(description)}">
-            <img src="${source}" alt="${escapeHtml(image[2] || description)}" loading="lazy">
-          </a>
-        </figure>`);
-      pendingCaption = "";
-      continue;
-    }
-
-    if (line.startsWith("- ")) {
-      if (!listOpen) {
-        chunks.push("<ul>");
-        listOpen = true;
-      }
-      chunks.push(`<li>${inlineMarkdown(line.slice(2))}</li>`);
-      continue;
-    }
-
-    closeList();
-    if (pendingCaption) {
-      chunks.push(`<p class="evidence-caption">${inlineMarkdown(pendingCaption)}</p>`);
-      pendingCaption = "";
-    }
-    chunks.push(`<p>${inlineMarkdown(line)}</p>`);
-  }
-
-  closeList();
-  return chunks.join("\n");
+const renderExtraSections = (project) => {
+  if (!project.extraSections?.length) return "";
+  return project.extraSections
+    .map(
+      (section) => `
+      <section class="report-shell report-extra">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Project detail</p>
+              <h2 class="section-title">${escapeHtml(section.title)}</h2>
+            </div>
+          </div>
+          <article class="report-content">${section.html}</article>
+        </div>
+      </section>`
+    )
+    .join("\n");
 };
 
 const renderProjectPage = (project) => {
+  const skillsHtml = project.skills.length
+    ? `<ul>${project.skills.map((skill) => `<li>${inlineMarkdown(skill, project)}</li>`).join("")}</ul>`
+    : `<p class="section-copy">See the detail sections below for skills demonstrated in this project.</p>`;
+  const toolsHtml = project.tools.length
+    ? renderTags(project.tools)
+    : `<p class="section-copy">See the lab stack and detail sections for tools used.</p>`;
+  const stepsAccent = project.stepsHeading?.includes("Evidence")
+    ? "Evidence <span class=\"accent-text\">walkthrough.</span>"
+    : "Lab evidence and <span class=\"accent-text\">investigation steps.</span>";
+
   const body = `
     ${renderHeader({ homePath: "../" })}
     <main id="main-content">
@@ -445,7 +720,7 @@ const renderProjectPage = (project) => {
             <div data-reveal>
               <p class="section-kicker">${escapeHtml(project.category)} case study</p>
               <h1>${escapeHtml(project.title)}</h1>
-              <p class="project-objective">${escapeHtml(project.objective)}</p>
+              <p class="project-objective">${inlineMarkdown(project.objective, project)}</p>
               <div class="button-row">
                 <a class="button" href="${project.github}" target="_blank" rel="noreferrer">View GitHub repository</a>
                 <a class="button button-secondary" href="../#projects">All projects</a>
@@ -463,20 +738,22 @@ const renderProjectPage = (project) => {
       <section class="container project-summary-grid">
         <article class="summary-card" data-reveal>
           <h2>Skills demonstrated</h2>
-          <ul>${project.skills.map((skill) => `<li>${escapeHtml(skill)}</li>`).join("")}</ul>
+          ${skillsHtml}
         </article>
         <article class="summary-card" data-reveal>
           <h2>Tools used</h2>
-          ${renderTags(project.tools)}
+          ${toolsHtml}
         </article>
       </section>
+
+      ${renderExtraSections(project)}
 
       <section class="report-shell">
         <div class="container">
           <div class="report-header">
             <div>
               <p class="section-kicker">Technical walkthrough</p>
-              <h2 class="section-title">Lab evidence and <span class="accent-text">investigation steps.</span></h2>
+              <h2 class="section-title">${stepsAccent}</h2>
             </div>
             <a class="button button-secondary" href="${project.github}" target="_blank" rel="noreferrer">Open on GitHub</a>
           </div>
@@ -496,11 +773,12 @@ const renderProjectPage = (project) => {
 
   return pageDocument({
     title: `${project.title} | ${profile.name}`,
-    description: project.objective,
+    description: project.objective.replace(/[`*_]/g, "").slice(0, 300),
     body,
     assetPrefix: ".."
   });
 };
+
 
 await fs.rm(outputDir, { recursive: true, force: true });
 await fs.mkdir(path.join(outputDir, "projects"), { recursive: true });
