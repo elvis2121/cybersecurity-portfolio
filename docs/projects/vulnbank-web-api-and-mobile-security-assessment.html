@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#070914">
-  <meta name="description" content="Assessed a banking training environment across web, API, and Android surfaces, documenting fourteen security issues with ordered proof and remediation guidance.">
+  <meta name="description" content="Assessed a banking training environment across web, API, and Android surfaces, documenting fifteen security issues with ordered proof and remediation guidance.">
   <meta property="og:title" content="VulnBank Web, API, and Mobile Security Assessment | Elvis Njau">
-  <meta property="og:description" content="Assessed a banking training environment across web, API, and Android surfaces, documenting fourteen security issues with ordered proof and remediation guidance.">
+  <meta property="og:description" content="Assessed a banking training environment across web, API, and Android surfaces, documenting fifteen security issues with ordered proof and remediation guidance.">
   <meta property="og:type" content="website">
   <title>VulnBank Web, API, and Mobile Security Assessment | Elvis Njau</title>
   <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon.png">
@@ -45,7 +45,7 @@
             <div data-reveal>
               <p class="section-kicker">Web &amp; Mobile Application Security case study</p>
               <h1>VulnBank Web, API, and Mobile Security Assessment</h1>
-              <p class="project-objective">Assessed a banking training environment across web, API, and Android surfaces, documenting fourteen security issues with ordered proof and remediation guidance.</p>
+              <p class="project-objective">Assessed a banking training environment across web, API, and Android surfaces, documenting fifteen security issues with ordered proof and remediation guidance.</p>
               <div class="button-row">
                 <a class="button" href="https://github.com/elvis2121/vulnbank-web-api-and-mobile-security-assessment" target="_blank" rel="noreferrer">View GitHub repository</a>
                 <a class="button button-secondary" href="../#projects">All projects</a>
@@ -229,8 +229,8 @@
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 22: Using a debug certificate implies the following: TODO (author): complete this explanation.</figcaption>
-          <a class="evidence-link" href="../content/projects/vulnbank-web-api-and-mobile-security-assessment/assets/step-22.png" data-evidence-link data-caption="Ref 22: Using a debug certificate implies the following: TODO (author): complete this explanation.">
+          <figcaption class="evidence-caption">Ref 22: Using a debug certificate implies the following: Android debug keystore certificates are well-known and shared across developer machines; an APK signed with a debug cert is not a production-trusted signature and is often also built with <code>android:debuggable</code> enabled. That weakens integrity guarantees: an attacker who obtains or rebuilds the package can more easily repackage/tamper with the app, retain installability for testing sideloads, and abuse debugging hooks. Production releases must be signed with a protected release (or Play App Signing) key and shipped non-debuggable.</figcaption>
+          <a class="evidence-link" href="../content/projects/vulnbank-web-api-and-mobile-security-assessment/assets/step-22.png" data-evidence-link data-caption="Ref 22: Using a debug certificate implies the following: Android debug keystore certificates are well-known and shared across developer machines; an APK signed with a debug cert is not a production-trusted signature and is often also built with `android:debuggable` enabled. That weakens integrity guarantees: an attacker who obtains or rebuilds the package can more easily repackage/tamper with the app, retain installability for testing sideloads, and abuse debugging hooks. Production releases must be signed with a protected release (or Play App Signing) key and shipped non-debuggable.">
             <img src="../content/projects/vulnbank-web-api-and-mobile-security-assessment/assets/step-22.png" alt="Using a debug certificate implies the following:" loading="lazy">
           </a>
         </figure>

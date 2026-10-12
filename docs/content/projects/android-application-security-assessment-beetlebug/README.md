@@ -8,7 +8,7 @@ Performed a controlled Android application assessment using static analysis, ADB
 - Pulled SQLite and Shared Preferences artifacts and verified plaintext sensitive data.
 - Monitored Logcat for credit-card and PII leakage.
 - Validated SQL injection, public Firebase access, and unauthenticated administrator activity invocation.
-- Assigned risk ratings and paired every finding with actionable remediation.
+- Assigned retrospective risk ratings and paired every finding with actionable remediation (see Findings Summary).
 
 ### Tools Used
 - JADX
@@ -20,18 +20,20 @@ Performed a controlled Android application assessment using static analysis, ADB
 - Android emulator
 
 ## Findings Summary
-Built only from the observations documented in the Steps below. TODO (author): add the risk ratings and remediation referenced in the objective.
+Severities and remediations below were assigned retrospectively from the documented evidence using standard OWASP/CVSS-style judgment (Critical / High / Medium / Low). They were not part of the original lab write-up.
+
+This assessment documents **8** security weaknesses, matching the objective count.
 
 | ID | Issue | OWASP category | Severity | Fix | Evidence |
 |---|---|---|---|---|---|
-| BB-01 | Folder-unlock PIN hardcoded in `strings.xml` | OWASP Mobile M1:2024 Improper Credential Usage | TBD by author | TBD by author | Refs 1-3 |
-| BB-02 | Promo code hardcoded and discount enforced client-side | OWASP Mobile M7:2024 Insufficient Binary Protections | TBD by author | TBD by author | Refs 4-5 |
-| BB-03 | Username, password and flag stored in plaintext Shared Preferences | OWASP Mobile M9:2024 Insecure Data Storage | TBD by author | TBD by author | Refs 6-7 |
-| BB-04 | Master PIN stored as readable text in local SQLite `user.db` | OWASP Mobile M9:2024 Insecure Data Storage | TBD by author | TBD by author | Refs 8-9 |
-| BB-05 | SQL injection returns other users' usernames, passwords and card values | OWASP Mobile M4:2024 Insufficient Input/Output Validation | TBD by author | TBD by author | Ref 10 |
-| BB-06 | Firebase Realtime Database readable without authentication | OWASP Mobile M8:2024 Security Misconfiguration | TBD by author | TBD by author | Refs 11-14 |
-| BB-07 | Card number and flag written to Logcat | OWASP Mobile M6:2024 Inadequate Privacy Controls | TBD by author | TBD by author | Refs 15-16 |
-| BB-08 | Exported `b33tleAdministrator` activity opens the admin dashboard without authentication | OWASP Mobile M3:2024 Insecure Authentication/Authorization | TBD by author | TBD by author | Refs 17-18 |
+| BB-01 | Folder-unlock PIN hardcoded in `strings.xml` | OWASP Mobile M1:2024 Improper Credential Usage | High | Do not embed secrets in resources; derive or fetch unlock secrets from a protected server-side check; obfuscation alone is insufficient. | Refs 1-3 |
+| BB-02 | Promo code hardcoded and discount enforced client-side | OWASP Mobile M7:2024 Insufficient Binary Protections | Medium | Validate promo codes and pricing on the server; treat the client as untrusted. | Refs 4-5 |
+| BB-03 | Username, password and flag stored in plaintext Shared Preferences | OWASP Mobile M9:2024 Insecure Data Storage | High | Use the Android Keystore / EncryptedSharedPreferences; never store passwords in plaintext preferences. | Refs 6-7 |
+| BB-04 | Master PIN stored as readable text in local SQLite `user.db` | OWASP Mobile M9:2024 Insecure Data Storage | High | Store only salted hashes (or server-side verification) for PINs; encrypt the database at rest if local storage is required. | Refs 8-9 |
+| BB-05 | SQL injection returns other users' usernames, passwords and card values | OWASP Mobile M4:2024 Insufficient Input/Output Validation | Critical | Use parameterized queries / ORM bindings; never concatenate user input into SQL; minimize sensitive columns on-device. | Ref 10 |
+| BB-06 | Firebase Realtime Database readable without authentication | OWASP Mobile M8:2024 Security Misconfiguration | Critical | Lock down Firebase security rules to authenticated, authorized access; remove public `.json` read; audit rules in CI. | Refs 11-14 |
+| BB-07 | Card number and flag written to Logcat | OWASP Mobile M6:2024 Inadequate Privacy Controls | High | Strip PII/PAN from logs; use guarded logging levels; scrub Logcat output in release builds. | Refs 15-16 |
+| BB-08 | Exported `b33tleAdministrator` activity opens the admin dashboard without authentication | OWASP Mobile M3:2024 Insecure Authentication/Authorization | High | Set `exported=false` (or require a signature/permission); enforce auth inside the activity before showing admin UI. | Refs 17-18 |
 
 ## Steps
 

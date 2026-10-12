@@ -17,15 +17,15 @@ Investigated keylogger exfiltration in packet traffic and created Snort rules fo
 - Nmap traffic patterns
 
 ## Detection Rules
-The Snort rules used in this lab are published as text in [`rules/local.rules`](rules/local.rules), transcribed from the Ref 5 screenshot.
+The Snort rules used in this lab are published as text in [`rules/local.rules`](rules/local.rules), transcribed from the Ref 5 screenshot and corrected as noted below.
 
 | SID | Message | Logic |
 |---|---|---|
-| 1000001 | ICMP ECHO REQUEST DETECTED | `itype:0` |
-| 1000002 | ICMP ECHO REPLY DETECTED | `itype:8` |
+| 1000001 | ICMP ECHO REPLY DETECTED | `itype:0` |
+| 1000002 | ICMP ECHO REQUEST DETECTED | `itype:8` |
 | 1000003 | TCP SYN STEALTH SCAN DETECTED | `flags:S,12; ack:0; dsize:0` |
 
-> Note: ICMP type 0 is Echo Reply and type 8 is Echo Request, so the labels on SIDs 1000001/1000002 appear swapped. TODO (author): confirm and correct in a later revision.
+**Changelog:** The screenshot originally labelled SID 1000001 (itype:0) as "ECHO REQUEST" and SID 1000002 (itype:8) as "ECHO REPLY". Only the `msg` strings were corrected so they match ICMP semantics (type 8 = Echo Request, type 0 = Echo Reply). Detection logic is unchanged.
 
 ## MITRE ATT&CK Mapping
 | Technique | ID | Evidence in this lab |

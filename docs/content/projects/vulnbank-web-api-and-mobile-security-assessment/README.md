@@ -1,7 +1,7 @@
 # VulnBank Web, API, and Mobile Security Assessment
 
 ## Objective
-Assessed a banking training environment across web, API, and Android surfaces, documenting fourteen security issues with ordered proof and remediation guidance.
+Assessed a banking training environment across web, API, and Android surfaces, documenting fifteen security issues with ordered proof and remediation guidance.
 
 ### Skills Learned
 - Enumerated infrastructure, directories, technologies, and vulnerable client libraries.
@@ -20,25 +20,27 @@ Assessed a banking training environment across web, API, and Android surfaces, d
 - Kali Linux
 
 ## Findings Summary
-Built only from the observations documented in the Steps below. The objective cites fourteen issues, but fifteen distinct observations are listed here. TODO (author): confirm the count, severities and fixes.
+Severities and remediations below were assigned retrospectively from the documented evidence using standard OWASP/CVSS-style judgment (Critical / High / Medium / Low). They were not part of the original lab write-up.
+
+This assessment documents **15** distinct observations. The original objective cited fourteen issues; the table enumerates every validated item from the Steps (including the debug-certificate finding) without dropping any.
 
 | ID | Issue | OWASP category | Severity | Fix | Evidence |
 |---|---|---|---|---|---|
-| VB-01 | Vulnerable client library: DOMPurify 2.3.3 | OWASP A06:2021 Vulnerable and Outdated Components | TBD by author | TBD by author | Ref 3 |
-| VB-02 | Admin login brute-forced with Burp Intruder | OWASP A07:2021 Identification and Authentication Failures | TBD by author | Enforce a complex-password policy (Ref 7) | Refs 6-7 |
-| VB-03 | SQL injection login bypass to the admin portal | OWASP A03:2021 Injection | TBD by author | TBD by author | Ref 8 |
-| VB-04 | `/api/v3/forgot-password` can be downgraded to v1, exposing the email OTP | OWASP API9:2023 Improper Inventory Management | TBD by author | TBD by author | Refs 9-10 |
-| VB-05 | No rate limiting on the login endpoint | OWASP API4:2023 Unrestricted Resource Consumption | TBD by author | TBD by author | Refs 11-12 |
-| VB-06 | `/register` returns excessive debug and server information | OWASP API8:2023 Security Misconfiguration | TBD by author | TBD by author | Ref 13 |
-| VB-07 | API documentation exposed at `/api/docs` without authentication | OWASP API9:2023 Improper Inventory Management | TBD by author | TBD by author | Ref 14 |
-| VB-08 | JWT algorithm downgraded from HS256 to `none` with the signature removed | OWASP API2:2023 Broken Authentication | TBD by author | TBD by author | Ref 15 |
-| VB-09 | Stored/reflected XSS in the `/transfer` description field | OWASP A03:2021 Injection | TBD by author | TBD by author | Refs 16-17 |
-| VB-10 | Admin credentials hardcoded in the Android manifest | OWASP Mobile M1:2024 Improper Credential Usage | TBD by author | TBD by author | Ref 18 |
-| VB-11 | Debug endpoint `/debug/users` declared in the manifest | OWASP Mobile M8:2024 Security Misconfiguration | TBD by author | TBD by author | Ref 19 |
-| VB-12 | Sensitive data stored in plaintext Shared Preferences | OWASP Mobile M9:2024 Insecure Data Storage | TBD by author | TBD by author | Ref 20 |
-| VB-13 | Data transmitted over unencrypted HTTP | OWASP Mobile M5:2024 Insecure Communication | TBD by author | TBD by author | Ref 21 |
-| VB-14 | App signed with a debug certificate | OWASP Mobile M8:2024 Security Misconfiguration | TBD by author | TBD by author | Ref 22 |
-| VB-15 | SHA-1 used for sensitive operations, enabling offline brute-force | OWASP Mobile M10:2024 Insufficient Cryptography | TBD by author | TBD by author | Ref 23 |
+| VB-01 | Vulnerable client library: DOMPurify 2.3.3 | OWASP A06:2021 Vulnerable and Outdated Components | Medium | Upgrade DOMPurify to a patched release; track JS dependencies with SCA and block known-vulnerable versions in CI. | Ref 3 |
+| VB-02 | Admin login brute-forced with Burp Intruder | OWASP A07:2021 Identification and Authentication Failures | High | Enforce a strong password policy, rate limiting, lockout/MFA, and monitoring for repeated failures (see also Ref 7). | Refs 6-7 |
+| VB-03 | SQL injection login bypass to the admin portal | OWASP A03:2021 Injection | Critical | Use parameterized queries for authentication; never concatenate credentials into SQL; add WAF/input validation as defence in depth. | Ref 8 |
+| VB-04 | `/api/v3/forgot-password` can be downgraded to v1, exposing the email OTP | OWASP API9:2023 Improper Inventory Management | High | Retire or harden old API versions; block version downgrade; never return OTPs in API responses. | Refs 9-10 |
+| VB-05 | No rate limiting on the login endpoint | OWASP API4:2023 Unrestricted Resource Consumption | High | Apply per-IP and per-account rate limits, backoff, and anomaly detection on authentication endpoints. | Refs 11-12 |
+| VB-06 | `/register` returns excessive debug and server information | OWASP API8:2023 Security Misconfiguration | Medium | Return generic errors to clients; disable debug banners and server version leakage in production. | Ref 13 |
+| VB-07 | API documentation exposed at `/api/docs` without authentication | OWASP API9:2023 Improper Inventory Management | Medium | Restrict Swagger/OpenAPI UIs to authenticated admin networks or remove them from production. | Ref 14 |
+| VB-08 | JWT algorithm downgraded from HS256 to `none` with the signature removed | OWASP API2:2023 Broken Authentication | Critical | Whitelist algorithms; reject `none`; verify signatures with server-managed keys; prefer asymmetric JWT where feasible. | Ref 15 |
+| VB-09 | Stored/reflected XSS in the `/transfer` description field | OWASP A03:2021 Injection | High | Context-aware output encoding; sanitize rich text; set a strict Content-Security-Policy. | Refs 16-17 |
+| VB-10 | Admin credentials hardcoded in the Android manifest | OWASP Mobile M1:2024 Improper Credential Usage | Critical | Remove secrets from the manifest and APK; use backend auth; rotate any exposed credentials. | Ref 18 |
+| VB-11 | Debug endpoint `/debug/users` declared in the manifest | OWASP Mobile M8:2024 Security Misconfiguration | High | Remove debug components from release builds; gate with build flavours; require auth if retained in non-prod. | Ref 19 |
+| VB-12 | Sensitive data stored in plaintext Shared Preferences | OWASP Mobile M9:2024 Insecure Data Storage | High | Use EncryptedSharedPreferences / Keystore; store tokens not passwords; clear data on logout. | Ref 20 |
+| VB-13 | Data transmitted over unencrypted HTTP | OWASP Mobile M5:2024 Insecure Communication | High | Enforce HTTPS (TLS 1.2+); enable network security config / certificate pinning where appropriate. | Ref 21 |
+| VB-14 | App signed with a debug certificate | OWASP Mobile M8:2024 Security Misconfiguration | Medium | Sign release builds with a protected upload/app-signing key; disable debuggable; verify Play App Signing / CI signing. | Ref 22 |
+| VB-15 | SHA-1 used for sensitive operations, enabling offline brute-force | OWASP Mobile M10:2024 Insufficient Cryptography | Medium | Replace SHA-1 with a modern password hash (e.g. Argon2/bcrypt/scrypt) or HMAC-SHA-256 for integrity use cases. | Ref 23 |
 
 ## Steps
 
@@ -126,7 +128,7 @@ Built only from the observations documented in the Steps below. The objective ci
 
 <img src="assets/step-21.png" width="602" height="299" alt="The application is transmitting data over unencrypted HTTP connections instead of HTTPS.">
 
-*Ref 22: Using a debug certificate implies the following: TODO (author): complete this explanation.*
+*Ref 22: Using a debug certificate implies the following: Android debug keystore certificates are well-known and shared across developer machines; an APK signed with a debug cert is not a production-trusted signature and is often also built with `android:debuggable` enabled. That weakens integrity guarantees: an attacker who obtains or rebuilds the package can more easily repackage/tamper with the app, retain installability for testing sideloads, and abuse debugging hooks. Production releases must be signed with a protected release (or Play App Signing) key and shipped non-debuggable.*
 
 <img src="assets/step-22.png" width="602" height="399" alt="Using a debug certificate implies the following:">
 
