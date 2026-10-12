@@ -22,7 +22,7 @@
       <div class="container nav-shell">
         <a class="brand" href="../" aria-label="Elvis Njau home">
           <span class="brand-mark" aria-hidden="true">EN</span>
-          <span class="brand-name">Elvis Njau / SOC Analyst</span>
+          <span class="brand-name">Elvis Njau / SOC Analyst (L2)</span>
         </a>
         <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-button>
           <span aria-hidden="true"></span>
@@ -82,65 +82,65 @@
           </div>
           <article class="report-content">
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 1: Assignment 2</figcaption>
-          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-01.png" data-evidence-link data-caption="Ref 1: Assignment 2">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-01.png" alt="Assignment 2" loading="lazy">
+          <figcaption class="evidence-caption">Ref 1: Wireshark Follow TCP Stream exposes the FTP password <code>Nipun@123</code> and confirms upload of the keylogger HTML artifact.</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-01.png" data-evidence-link data-caption="Ref 1: Wireshark Follow TCP Stream exposes the FTP password `Nipun@123` and confirms upload of the keylogger HTML artifact.">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-01.png" alt="Wireshark TCP stream showing FTP login success and upload of Keys_2018-11-28_16-04-42.html" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 2: Assignment 2</figcaption>
-          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-02.png" data-evidence-link data-caption="Ref 2: Assignment 2">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-02.png" alt="Assignment 2" loading="lazy">
+          <figcaption class="evidence-caption">Ref 2: Wireshark FTP-DATA object export identifies the two transferred HTML files and their source host.</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-02.png" data-evidence-link data-caption="Ref 2: Wireshark FTP-DATA object export identifies the two transferred HTML files and their source host.">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-02.png" alt="Wireshark FTP-DATA object list showing Keys and Web HTML files from 192.168.76.131" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 3: Assignment 2</figcaption>
-          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-03.png" data-evidence-link data-caption="Ref 3: Assignment 2">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-03.png" alt="Assignment 2" loading="lazy">
+          <figcaption class="evidence-caption">Ref 3: Recovered keylogger artifact shows the captured Windows Explorer activity for the Pictures directory.</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-03.png" data-evidence-link data-caption="Ref 3: Recovered keylogger artifact shows the captured Windows Explorer activity for the Pictures directory.">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-03.png" alt="Recovered Keys HTML file showing explorer.exe activity in the Pictures directory" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 4: Assignment 2</figcaption>
-          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-04.png" data-evidence-link data-caption="Ref 4: Assignment 2">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-04.png" alt="Assignment 2" loading="lazy">
+          <figcaption class="evidence-caption">Ref 4: Recovered browser artifact records the user <code>nipun</code> opening <code>http://gmail.com/</code> in Microsoft Edge.</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-04.png" data-evidence-link data-caption="Ref 4: Recovered browser artifact records the user `nipun` opening `http://gmail.com/` in Microsoft Edge.">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-04.png" alt="Recovered Web HTML file showing Microsoft Edge activity for http://gmail.com/" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 5: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/</figcaption>
-          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-05.png" data-evidence-link data-caption="Ref 5: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-05.png" alt="https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/" loading="lazy">
+          <figcaption class="evidence-caption">Ref 5: Custom Snort local rules define ICMP echo request, ICMP echo reply, and TCP SYN stealth scan detections.</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-05.png" data-evidence-link data-caption="Ref 5: Custom Snort local rules define ICMP echo request, ICMP echo reply, and TCP SYN stealth scan detections.">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-05.png" alt="Snort local.rules file containing ICMP echo and TCP SYN stealth scan alert signatures" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 6: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/</figcaption>
-          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-06.png" data-evidence-link data-caption="Ref 6: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-06.png" alt="https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/" loading="lazy">
+          <figcaption class="evidence-caption">Ref 6: Snort alert output confirms the TCP SYN stealth scan rule triggers on Nmap <code>-sS</code> traffic.</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-06.png" data-evidence-link data-caption="Ref 6: Snort alert output confirms the TCP SYN stealth scan rule triggers on Nmap `-sS` traffic.">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-06.png" alt="Snort terminal output showing repeated TCP SYN stealth scan alerts" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 7: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/</figcaption>
-          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-07.png" data-evidence-link data-caption="Ref 7: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-07.png" alt="https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/" loading="lazy">
+          <figcaption class="evidence-caption">Ref 7: Snort alert output verifies the ICMP request and reply rules during ping traffic between the monitored hosts.</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-07.png" data-evidence-link data-caption="Ref 7: Snort alert output verifies the ICMP request and reply rules during ping traffic between the monitored hosts.">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-07.png" alt="Snort terminal output showing ICMP echo request and reply alerts" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 8: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/</figcaption>
-          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-08.png" data-evidence-link data-caption="Ref 8: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-08.png" alt="https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/" loading="lazy">
+          <figcaption class="evidence-caption">Ref 8: Nmap SYN scan against <code>192.168.1.11</code> discovers open FTP, SSH, and HTTP services used to validate the Snort scan rule.</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-08.png" data-evidence-link data-caption="Ref 8: Nmap SYN scan against `192.168.1.11` discovers open FTP, SSH, and HTTP services used to validate the Snort scan rule.">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-08.png" alt="Nmap SYN scan results for 192.168.1.11 showing open ports 21, 22, and 80" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 9: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/</figcaption>
-          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-09.png" data-evidence-link data-caption="Ref 9: https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/">
-            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-09.png" alt="https://www.crowdstrike.com/en-us/cybersecurity-101/threat-intelligence/snort-rules/" loading="lazy">
+          <figcaption class="evidence-caption">Ref 9: Ping test against <code>192.168.1.11</code> generates ICMP traffic used to validate echo request and echo reply alerts.</figcaption>
+          <a class="evidence-link" href="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-09.png" data-evidence-link data-caption="Ref 9: Ping test against `192.168.1.11` generates ICMP traffic used to validate echo request and echo reply alerts.">
+            <img src="../content/projects/network-forensics-and-snort-detection-engineering/assets/step-09.png" alt="Ping results for 192.168.1.11 showing successful ICMP replies with no packet loss" loading="lazy">
           </a>
         </figure></article>
         </div>

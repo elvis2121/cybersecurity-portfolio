@@ -110,7 +110,7 @@ const renderHeader = ({ homePath = "./", current = "" } = {}) => {
       <div class="container nav-shell">
         <a class="brand" href="${homePath}" aria-label="${escapeHtml(profile.name)} home">
           <span class="brand-mark" aria-hidden="true">EN</span>
-          <span class="brand-name">${escapeHtml(profile.name)} / SOC Analyst</span>
+          <span class="brand-name">${escapeHtml(profile.name)} / SOC Analyst (L2)</span>
         </a>
         <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-button>
           <span aria-hidden="true"></span>
@@ -190,7 +190,7 @@ const homeBody = `
       <div class="container hero-grid">
         <div data-reveal>
           <span class="eyebrow">Hello, I'm</span>
-          <h1>${escapeHtml(profile.name)}<span class="hero-title">${escapeHtml(profile.title)} specializing as a ${escapeHtml(profile.specialty)}</span></h1>
+          <h1>${escapeHtml(profile.name)}<span class="hero-title">${escapeHtml(profile.title)}</span></h1>
           <p class="hero-copy">${escapeHtml(profile.summary)}</p>
           <p class="hero-meta">
             <span>${escapeHtml(profile.location)}</span>
@@ -347,7 +347,7 @@ const homeBody = `
       <div class="container contact-card" data-reveal>
         <div>
           <p class="section-kicker">Let's connect</p>
-          <h2>Hiring for a SOC analyst?</h2>
+          <h2>Hiring a SOC Analyst (L2) or Detection Engineer?</h2>
           <p>${escapeHtml(profile.location)} · ${escapeHtml(profile.availability)}</p>
         </div>
         <div class="button-row">
@@ -513,8 +513,8 @@ await fs.copyFile(path.join(srcDir, "app.js"), path.join(outputDir, "assets", "a
 await fs.writeFile(
   path.join(outputDir, "index.html"),
   pageDocument({
-    title: `${profile.name} | Cybersecurity Engineer & SOC Analyst`,
-    description: `${profile.name} is a cybersecurity engineer and SOC analyst in ${profile.location}. Explore published security projects, skills, certifications, and experience.`,
+    title: `${profile.name} | SOC Analyst (L2) / Detection Engineer`,
+    description: `${profile.name} is a SOC Analyst (L2) and detection engineer in ${profile.location}. Explore published security projects, skills, certifications, and experience.`,
     body: homeBody
   })
 );
