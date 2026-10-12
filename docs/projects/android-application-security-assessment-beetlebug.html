@@ -11,8 +11,8 @@
   <title>Android Application Security Assessment: Beetlebug | Elvis Njau</title>
   <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="../assets/styles.css?v=85217d1e10">
-  <script src="../assets/app.js?v=85217d1e10" defer></script>
+  <link rel="stylesheet" href="../assets/styles.css?v=35d5e17d68">
+  <script src="../assets/app.js?v=35d5e17d68" defer></script>
 </head>
 <body>
 
@@ -71,6 +71,36 @@
         </article>
       </section>
 
+      
+      <section class="report-shell report-extra">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Project detail</p>
+              <h2 class="section-title">Findings Summary</h2>
+            </div>
+          </div>
+          <article class="report-content"><p>Severities and remediations below were assigned retrospectively from the documented evidence using standard OWASP/CVSS-style judgment (Critical / High / Medium / Low). They were not part of the original lab write-up.</p>
+<p>This assessment documents <strong>8</strong> security weaknesses, matching the objective count.</p>
+
+    <div class="md-table-wrap">
+      <table class="md-table">
+        <thead><tr><th>ID</th><th>Issue</th><th>OWASP category</th><th>Severity</th><th>Fix</th><th>Evidence</th></tr></thead>
+        <tbody>
+          <tr><td>BB-01</td><td>Folder-unlock PIN hardcoded in <code>strings.xml</code></td><td>OWASP Mobile M1:2024 Improper Credential Usage</td><td>High</td><td>Do not embed secrets in resources; derive or fetch unlock secrets from a protected server-side check; obfuscation alone is insufficient.</td><td>Refs 1-3</td></tr>
+<tr><td>BB-02</td><td>Promo code hardcoded and discount enforced client-side</td><td>OWASP Mobile M7:2024 Insufficient Binary Protections</td><td>Medium</td><td>Validate promo codes and pricing on the server; treat the client as untrusted.</td><td>Refs 4-5</td></tr>
+<tr><td>BB-03</td><td>Username, password and flag stored in plaintext Shared Preferences</td><td>OWASP Mobile M9:2024 Insecure Data Storage</td><td>High</td><td>Use the Android Keystore / EncryptedSharedPreferences; never store passwords in plaintext preferences.</td><td>Refs 6-7</td></tr>
+<tr><td>BB-04</td><td>Master PIN stored as readable text in local SQLite <code>user.db</code></td><td>OWASP Mobile M9:2024 Insecure Data Storage</td><td>High</td><td>Store only salted hashes (or server-side verification) for PINs; encrypt the database at rest if local storage is required.</td><td>Refs 8-9</td></tr>
+<tr><td>BB-05</td><td>SQL injection returns other users' usernames, passwords and card values</td><td>OWASP Mobile M4:2024 Insufficient Input/Output Validation</td><td>Critical</td><td>Use parameterized queries / ORM bindings; never concatenate user input into SQL; minimize sensitive columns on-device.</td><td>Ref 10</td></tr>
+<tr><td>BB-06</td><td>Firebase Realtime Database readable without authentication</td><td>OWASP Mobile M8:2024 Security Misconfiguration</td><td>Critical</td><td>Lock down Firebase security rules to authenticated, authorized access; remove public <code>.json</code> read; audit rules in CI.</td><td>Refs 11-14</td></tr>
+<tr><td>BB-07</td><td>Card number and flag written to Logcat</td><td>OWASP Mobile M6:2024 Inadequate Privacy Controls</td><td>High</td><td>Strip PII/PAN from logs; use guarded logging levels; scrub Logcat output in release builds.</td><td>Refs 15-16</td></tr>
+<tr><td>BB-08</td><td>Exported <code>b33tleAdministrator</code> activity opens the admin dashboard without authentication</td><td>OWASP Mobile M3:2024 Insecure Authentication/Authorization</td><td>High</td><td>Set <code>exported=false</code> (or require a signature/permission); enforce auth inside the activity before showing admin UI.</td><td>Refs 17-18</td></tr>
+        </tbody>
+      </table>
+    </div></article>
+        </div>
+      </section>
+
       <section class="report-shell">
         <div class="container">
           <div class="report-header">
@@ -84,126 +114,126 @@
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 1: Static analysis in JADX shows the folder-unlock PIN being compared against a resource string instead of a value generated or protected at runtime.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-01.png" data-evidence-link data-caption="Ref 1: Static analysis in JADX shows the folder-unlock PIN being compared against a resource string instead of a value generated or protected at runtime.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-01.png" alt="Static analysis in JADX shows the folder-unlock PIN being compared against a resource string instead of a value generated or protected at runtime." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-01.png" alt="Ref 1: Static analysis in JADX shows the folder-unlock PIN being compared against a resource string instead of a value generated or protected at runtime." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 2: The referenced value in <code>strings.xml</code> exposes the hardcoded unlock PIN, allowing the secret to be recovered directly from the decompiled APK.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-02.png" data-evidence-link data-caption="Ref 2: The referenced value in `strings.xml` exposes the hardcoded unlock PIN, allowing the secret to be recovered directly from the decompiled APK.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-02.png" alt="The referenced value in strings.xml exposes the hardcoded unlock PIN, allowing the secret to be recovered directly from the decompiled APK." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-02.png" alt="Ref 2: The referenced value in `strings.xml` exposes the hardcoded unlock PIN, allowing the secret to be recovered directly from the decompiled APK." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 3: Entering the recovered PIN unlocks the protected folder and confirms that an embedded client-side secret can be used to complete the challenge.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-03.png" data-evidence-link data-caption="Ref 3: Entering the recovered PIN unlocks the protected folder and confirms that an embedded client-side secret can be used to complete the challenge.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-03.png" alt="Entering the recovered PIN unlocks the protected folder and confirms that an embedded client-side secret can be used to complete the challenge." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-03.png" alt="Ref 3: Entering the recovered PIN unlocks the protected folder and confirms that an embedded client-side secret can be used to complete the challenge." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 4: The promo-code activity contains a hardcoded discount value, making the code recoverable through reverse engineering.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-04.png" data-evidence-link data-caption="Ref 4: The promo-code activity contains a hardcoded discount value, making the code recoverable through reverse engineering.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-04.png" alt="The promo-code activity contains a hardcoded discount value, making the code recoverable through reverse engineering." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-04.png" alt="Ref 4: The promo-code activity contains a hardcoded discount value, making the code recoverable through reverse engineering." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 5: Submitting the recovered promo code applies the discount in the application, demonstrating that the promotion logic is enforced on the client and can be abused repeatedly.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-05.png" data-evidence-link data-caption="Ref 5: Submitting the recovered promo code applies the discount in the application, demonstrating that the promotion logic is enforced on the client and can be abused repeatedly.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-05.png" alt="Submitting the recovered promo code applies the discount in the application, demonstrating that the promotion logic is enforced on the client and can be abused repeatedly." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-05.png" alt="Ref 5: Submitting the recovered promo code applies the discount in the application, demonstrating that the promotion logic is enforced on the client and can be abused repeatedly." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 6: Pulling <code>shared_pref_flag.xml</code> with ADB reveals that the application stores the submitted username, password, and flag value in plaintext Shared Preferences.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-06.png" data-evidence-link data-caption="Ref 6: Pulling `shared_pref_flag.xml` with ADB reveals that the application stores the submitted username, password, and flag value in plaintext Shared Preferences.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-06.png" alt="Pulling shared_pref_flag.xml with ADB reveals that the application stores the submitted username, password, and flag value in plaintext Shared Preferences." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-06.png" alt="Ref 6: Pulling `shared_pref_flag.xml` with ADB reveals that the application stores the submitted username, password, and flag value in plaintext Shared Preferences." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 7: The Shared Preferences challenge screen shows the same credentials entered in the app, linking the plaintext XML artifact back to user-controlled input.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-07.png" data-evidence-link data-caption="Ref 7: The Shared Preferences challenge screen shows the same credentials entered in the app, linking the plaintext XML artifact back to user-controlled input.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-07.png" alt="The Shared Preferences challenge screen shows the same credentials entered in the app, linking the plaintext XML artifact back to user-controlled input." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-07.png" alt="Ref 7: The Shared Preferences challenge screen shows the same credentials entered in the app, linking the plaintext XML artifact back to user-controlled input." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 8: ADB is used to pull <code>user.db</code> from the application data directory, showing that the local SQLite database is accessible for offline inspection on a test device.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-08.png" data-evidence-link data-caption="Ref 8: ADB is used to pull `user.db` from the application data directory, showing that the local SQLite database is accessible for offline inspection on a test device.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-08.png" alt="ADB is used to pull user.db from the application data directory, showing that the local SQLite database is accessible for offline inspection on a test device." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-08.png" alt="Ref 8: ADB is used to pull `user.db` from the application data directory, showing that the local SQLite database is accessible for offline inspection on a test device." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 9: After pulling <code>user.db</code>, DB Browser for SQLite shows the master PIN stored as readable text in the <code>users</code> table.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-09.png" data-evidence-link data-caption="Ref 9: After pulling `user.db`, DB Browser for SQLite shows the master PIN stored as readable text in the `users` table.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-09.png" alt="After pulling user.db, DB Browser for SQLite shows the master PIN stored as readable text in the users table." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-09.png" alt="Ref 9: After pulling `user.db`, DB Browser for SQLite shows the master PIN stored as readable text in the `users` table." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 10: A basic SQL injection payload bypasses the intended lookup and returns multiple users, including usernames, passwords, and credit-card values.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-10.png" data-evidence-link data-caption="Ref 10: A basic SQL injection payload bypasses the intended lookup and returns multiple users, including usernames, passwords, and credit-card values.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-10.png" alt="A basic SQL injection payload bypasses the intended lookup and returns multiple users, including usernames, passwords, and credit-card values." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-10.png" alt="Ref 10: A basic SQL injection payload bypasses the intended lookup and returns multiple users, including usernames, passwords, and credit-card values." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 11: Reviewing <code>strings.xml</code> also exposes the Firebase Realtime Database URL, which provides a direct backend target for access-control testing.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-11.png" data-evidence-link data-caption="Ref 11: Reviewing `strings.xml` also exposes the Firebase Realtime Database URL, which provides a direct backend target for access-control testing.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-11.png" alt="Reviewing strings.xml also exposes the Firebase Realtime Database URL, which provides a direct backend target for access-control testing." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-11.png" alt="Ref 11: Reviewing `strings.xml` also exposes the Firebase Realtime Database URL, which provides a direct backend target for access-control testing." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 12: Querying the Firebase <code>.json</code> endpoint with <code>curl</code> and formatting it with <code>jq</code> returns database records without authentication, confirming public read access.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-12.png" data-evidence-link data-caption="Ref 12: Querying the Firebase `.json` endpoint with `curl` and formatting it with `jq` returns database records without authentication, confirming public read access.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-12.png" alt="Querying the Firebase .json endpoint with curl and formatting it with jq returns database records without authentication, confirming public read access." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-12.png" alt="Ref 12: Querying the Firebase `.json` endpoint with `curl` and formatting it with `jq` returns database records without authentication, confirming public read access." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 13: The unauthenticated Firebase response includes the challenge flag and other user-submitted fields, showing the impact of the misconfigured database rules.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-13.png" data-evidence-link data-caption="Ref 13: The unauthenticated Firebase response includes the challenge flag and other user-submitted fields, showing the impact of the misconfigured database rules.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-13.png" alt="The unauthenticated Firebase response includes the challenge flag and other user-submitted fields, showing the impact of the misconfigured database rules." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-13.png" alt="Ref 13: The unauthenticated Firebase response includes the challenge flag and other user-submitted fields, showing the impact of the misconfigured database rules." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 14: The Firebase challenge screen explains the expected network call pattern, tying the exposed database URL to the in-app misconfiguration test.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-14.png" data-evidence-link data-caption="Ref 14: The Firebase challenge screen explains the expected network call pattern, tying the exposed database URL to the in-app misconfiguration test.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-14.png" alt="The Firebase challenge screen explains the expected network call pattern, tying the exposed database URL to the in-app misconfiguration test." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-14.png" alt="Ref 14: The Firebase challenge screen explains the expected network call pattern, tying the exposed database URL to the in-app misconfiguration test." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 15: The card number, expiry date, and CVV entered into the payment form are sensitive values that should not be persisted or emitted in application logs.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-15.png" data-evidence-link data-caption="Ref 15: The card number, expiry date, and CVV entered into the payment form are sensitive values that should not be persisted or emitted in application logs.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-15.png" alt="The card number, expiry date, and CVV entered into the payment form are sensitive values that should not be persisted or emitted in application logs." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-15.png" alt="Ref 15: The card number, expiry date, and CVV entered into the payment form are sensitive values that should not be persisted or emitted in application logs." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 16: Inspecting Logcat after submitting the payment form shows the card number and flag printed by the app, confirming sensitive-data leakage through logs.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-16.png" data-evidence-link data-caption="Ref 16: Inspecting Logcat after submitting the payment form shows the card number and flag printed by the app, confirming sensitive-data leakage through logs.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-16.png" alt="Inspecting Logcat after submitting the payment form shows the card number and flag printed by the app, confirming sensitive-data leakage through logs." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-16.png" alt="Ref 16: Inspecting Logcat after submitting the payment form shows the card number and flag printed by the app, confirming sensitive-data leakage through logs." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 17: The Android manifest exposes <code>app.beetlebug.ctf.b33tleAdministrator</code>, allowing the admin activity to be launched from outside the normal app flow.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-17.png" data-evidence-link data-caption="Ref 17: The Android manifest exposes `app.beetlebug.ctf.b33tleAdministrator`, allowing the admin activity to be launched from outside the normal app flow.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-17.png" alt="The Android manifest exposes app.beetlebug.ctf.b33tleAdministrator, allowing the admin activity to be launched from outside the normal app flow." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-17.png" alt="Ref 17: The Android manifest exposes `app.beetlebug.ctf.b33tleAdministrator`, allowing the admin activity to be launched from outside the normal app flow." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 18: Launching the exported component with <code>adb shell am start -n app.beetlebug/.ctf.b33tleAdministrator</code> opens the admin dashboard without authentication.</figcaption>
           <a class="evidence-link" href="../content/projects/android-application-security-assessment-beetlebug/assets/step-18.png" data-evidence-link data-caption="Ref 18: Launching the exported component with `adb shell am start -n app.beetlebug/.ctf.b33tleAdministrator` opens the admin dashboard without authentication.">
-            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-18.png" alt="Launching the exported component with adb shell am start -n app.beetlebug/.ctf.b33tleAdministrator opens the admin dashboard without authentication." loading="lazy">
+            <img src="../content/projects/android-application-security-assessment-beetlebug/assets/step-18.png" alt="Ref 18: Launching the exported component with `adb shell am start -n app.beetlebug/.ctf.b33tleAdministrator` opens the admin dashboard without authentication." loading="lazy">
           </a>
         </figure></article>
         </div>

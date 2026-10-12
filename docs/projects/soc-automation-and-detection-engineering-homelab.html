@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#070914">
-  <meta name="description" content="Built and validated an end-to-end SOC homelab that inspects outbound traffic, centralizes network and endpoint telemetry in Splunk, and automates enrichment, case management, forensic collection, and host isolation through n8n, DFIR-IRIS, Velociraptor, and Wazuh.">
+  <meta name="description" content="The lab is organized into three operational planes:">
   <meta property="og:title" content="SOC Automation and Detection Engineering Homelab | Elvis Njau">
-  <meta property="og:description" content="Built and validated an end-to-end SOC homelab that inspects outbound traffic, centralizes network and endpoint telemetry in Splunk, and automates enrichment, case management, forensic collection, and host isolation through n8n, DFIR-IRIS, Velociraptor, and Wazuh.">
+  <meta property="og:description" content="The lab is organized into three operational planes:">
   <meta property="og:type" content="website">
   <title>SOC Automation and Detection Engineering Homelab | Elvis Njau</title>
   <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="../assets/styles.css?v=85217d1e10">
-  <script src="../assets/app.js?v=85217d1e10" defer></script>
+  <link rel="stylesheet" href="../assets/styles.css?v=35d5e17d68">
+  <script src="../assets/app.js?v=35d5e17d68" defer></script>
 </head>
 <body>
 
@@ -45,7 +45,7 @@
             <div data-reveal>
               <p class="section-kicker">Detection Engineering case study</p>
               <h1>SOC Automation and Detection Engineering Homelab</h1>
-              <p class="project-objective">Built and validated an end-to-end SOC homelab that inspects outbound traffic, centralizes network and endpoint telemetry in Splunk, and automates enrichment, case management, forensic collection, and host isolation through n8n, DFIR-IRIS, Velociraptor, and Wazuh.</p>
+              <p class="project-objective">The lab is organized into three operational planes:</p>
               <div class="button-row">
                 <a class="button" href="https://github.com/elvis2121/soc-automation-and-detection-engineering-homelab" target="_blank" rel="noreferrer">View GitHub repository</a>
                 <a class="button button-secondary" href="../#projects">All projects</a>
@@ -63,12 +63,160 @@
       <section class="container project-summary-grid">
         <article class="summary-card" data-reveal>
           <h2>Skills demonstrated</h2>
-          <ul><li>Engineered segmented traffic inspection with `pfSense`, `Squid Proxy`, and `Suricata`.</li><li>Forwarded endpoint and network telemetry into `Splunk` for centralized correlation.</li><li>Automated IOC enrichment, AI triage, ticketing, and response decisions with `n8n`.</li><li>Triggered forensic collection with `Velociraptor` and host isolation with `Wazuh Active Response`.</li><li>Validated both high-risk and low-risk alert paths with controlled synthetic events.</li></ul>
+          <ul><li>Build a realistic SOC homelab with segmented traffic inspection and centralized telemetry.</li><li>Validate Splunk-driven detections with synthetic high-risk and low-risk events.</li><li>Automate analyst workflows for enrichment, ticketing, triage, forensics, and containment.</li><li>Preserve evidence with screenshots that are ready for GitHub and GitHub Pages publication.</li></ul>
         </article>
         <article class="summary-card" data-reveal>
           <h2>Tools used</h2>
-          <ul class="tag-list"><li class="tag">pfSense</li><li class="tag">Squid Proxy</li><li class="tag">Suricata</li><li class="tag">Splunk</li><li class="tag">Sysmon</li><li class="tag">Wazuh</li><li class="tag">n8n</li><li class="tag">DFIR-IRIS</li><li class="tag">Velociraptor</li><li class="tag">VirusTotal</li><li class="tag">LM Studio or Ollama</li></ul>
+          <ul class="tag-list"><li class="tag">pfSense</li><li class="tag">Squid Proxy</li><li class="tag">Suricata</li><li class="tag">Windows 11</li><li class="tag">Sysmon</li><li class="tag">Wazuh Agent</li><li class="tag">Splunk UF</li><li class="tag">Splunk</li><li class="tag">n8n</li><li class="tag">DFIR-IRIS</li><li class="tag">Velociraptor</li><li class="tag">Wazuh Active Response</li><li class="tag">VirusTotal</li><li class="tag">LM Studio</li><li class="tag">Ollama</li></ul>
         </article>
+      </section>
+
+      
+      <section class="report-shell report-extra">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Project detail</p>
+              <h2 class="section-title">Overview</h2>
+            </div>
+          </div>
+          <article class="report-content"><p>The lab is organized into three operational planes:</p>
+<ul>
+<li>Data plane: <code>pfSense</code>, <code>Squid Proxy</code>, and <code>Suricata</code> enforce controlled egress, SSL inspection, and network detection coverage.</li>
+<li>Telemetry plane: <code>Sysmon</code>, <code>Wazuh</code>, remote syslog, and <code>Splunk Universal Forwarder</code> push endpoint and network evidence into <code>Splunk</code>.</li>
+<li>Response plane: <code>n8n</code> orchestrates <code>VirusTotal</code>, a local LLM triage step, <code>DFIR-IRIS</code>, <code>Velociraptor</code>, and <code>Wazuh Active Response</code>.</li>
+</ul></article>
+        </div>
+      </section>
+
+      <section class="report-shell report-extra">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Project detail</p>
+              <h2 class="section-title">Lab Stack</h2>
+            </div>
+          </div>
+          <article class="report-content">
+    <div class="md-table-wrap">
+      <table class="md-table">
+        <thead><tr><th>Layer</th><th>Components</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Perimeter and inspection</td><td><code>pfSense</code>, <code>Squid Proxy</code>, <code>Suricata</code></td><td>Force proxy-based egress, decrypt inspected traffic, and monitor network activity.</td></tr>
+<tr><td>Endpoint telemetry</td><td><code>Windows 11</code>, <code>Sysmon</code>, <code>Wazuh Agent</code>, <code>Splunk UF</code></td><td>Generate host telemetry and forward it into the SIEM pipeline.</td></tr>
+<tr><td>Analytics and correlation</td><td><code>Splunk</code></td><td>Centralize logs, run searches, and trigger SOAR workflows.</td></tr>
+<tr><td>SOAR and case handling</td><td><code>n8n</code>, <code>DFIR-IRIS</code></td><td>Normalize alerts, enrich evidence, and track investigations.</td></tr>
+<tr><td>Forensics and containment</td><td><code>Velociraptor</code>, <code>Wazuh Active Response</code></td><td>Collect volatile evidence and isolate affected endpoints.</td></tr>
+<tr><td>Intelligence and reasoning</td><td><code>VirusTotal</code>, local LLM via <code>LM Studio</code> or <code>Ollama</code></td><td>Enrich indicators and provide deterministic triage output.</td></tr>
+        </tbody>
+      </table>
+    </div></article>
+        </div>
+      </section>
+
+      <section class="report-shell report-extra">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Project detail</p>
+              <h2 class="section-title">Detection and Response Flow</h2>
+            </div>
+          </div>
+          <article class="report-content"><ul>
+<li>Endpoint, proxy, firewall, and IDS telemetry is forwarded into <code>Splunk</code>.</li>
+<li>A Splunk correlation search sends a webhook payload into <code>n8n</code>.</li>
+<li><code>n8n</code> creates or updates a case in <code>DFIR-IRIS</code>.</li>
+<li>The workflow enriches the alert with <code>VirusTotal</code>.</li>
+<li>A local LLM returns a deterministic <code>HIGH_RISK</code> or <code>LOW_RISK</code> triage decision.</li>
+<li>High-risk alerts trigger <code>Velociraptor</code> collection and <code>Wazuh</code> host isolation.</li>
+<li>Low-risk alerts are documented and closed with supporting context.</li>
+</ul></article>
+        </div>
+      </section>
+
+      <section class="report-shell report-extra">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Project detail</p>
+              <h2 class="section-title">Validation Approach</h2>
+            </div>
+          </div>
+          <article class="report-content"><p>Two synthetic scenarios were used to validate the workflow safely:</p>
+<ul>
+<li>High-risk path: a simulated malicious IOC event designed to trigger escalation, enrichment, forensic collection, and containment.</li>
+<li>Low-risk path: a benign browser and gateway activity event designed to confirm safe closure behavior.</li>
+</ul>
+<p>No real malware execution or uncontrolled external traffic was required for these tests.</p></article>
+        </div>
+      </section>
+
+      <section class="report-shell report-extra">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Project detail</p>
+              <h2 class="section-title">MITRE ATT&amp;CK Mapping</h2>
+            </div>
+          </div>
+          <article class="report-content"><p>Validation used <strong>synthetic JSON events only</strong>. No adversary technique was executed live on the wire.</p>
+
+    <div class="md-table-wrap">
+      <table class="md-table">
+        <thead><tr><th>Scenario</th><th>Technique (emulated only)</th><th>ID</th><th>Detection source</th><th>Response evidence</th></tr></thead>
+        <tbody>
+          <tr><td>High-risk path (<code>scripts/highrisk.ps1</code>)</td><td>Emulated scenario (synthetic events, no live execution): PowerShell-associated outbound connection to a VirusTotal-flagged IP</td><td>N/A — not executed</td><td>Splunk correlation search (Ref 6), Wazuh alert (Ref 7)</td><td>Velociraptor collection (Refs 12-14), Wazuh host isolation (Ref 8), DFIR-IRIS case (Ref 11)</td></tr>
+<tr><td>Low-risk path (<code>scripts/lowrisk.ps1</code>, original name <code>payload-vt-low-risk.ps1</code>)</td><td>N/A (benign synthetic browser/gateway activity)</td><td>N/A</td><td>Splunk correlation search (Ref 6)</td><td>Documented and closed (flow step 7)</td></tr>
+        </tbody>
+      </table>
+    </div>
+<p>Published test generators: <a href="https://github.com/elvis2121/soc-automation-and-detection-engineering-homelab/blob/main/scripts/highrisk.ps1" target="_blank" rel="noreferrer"><code>scripts/highrisk.ps1</code></a>, <a href="https://github.com/elvis2121/soc-automation-and-detection-engineering-homelab/blob/main/scripts/lowrisk.ps1" target="_blank" rel="noreferrer"><code>scripts/lowrisk.ps1</code></a>. Architecture write-up: <a href="https://github.com/elvis2121/soc-automation-and-detection-engineering-homelab/blob/main/docs/architecture.md" target="_blank" rel="noreferrer"><code>docs/architecture.md</code></a>.</p></article>
+        </div>
+      </section>
+
+      <section class="report-shell report-extra">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Project detail</p>
+              <h2 class="section-title">Detection &amp; Response Logic</h2>
+            </div>
+          </div>
+          <article class="report-content"><blockquote class="md-quote"><strong>Summary grounded in the lab blueprint and screenshots.</strong> The original SPL saved searches, n8n workflow export, and Wazuh rule files are no longer available. Behaviour below matches <a href="https://github.com/elvis2121/soc-automation-and-detection-engineering-homelab/blob/main/docs/architecture.md" target="_blank" rel="noreferrer"><code>docs/architecture.md</code></a> and the evidence refs. Exact query syntax is not reproduced.</blockquote>
+<p><strong>Enrichment source:</strong> VirusTotal v3 (confirmed in the June 2026 architecture blueprint and in the synthetic event payloads: <code>threat_intel_source = &quot;VirusTotal&quot;</code>).</p>
+<blockquote class="md-quote"><strong>Footnote — Ref 10:</strong> The Ref 10 workflow screenshot shows an earlier <strong>Shuffle / MISP</strong> prototype (node labelled &quot;MISP Threat Intel Lookup&quot;). The production lab design documented in <a href="https://github.com/elvis2121/soc-automation-and-detection-engineering-homelab/blob/main/docs/architecture.md" target="_blank" rel="noreferrer"><code>docs/architecture.md</code></a> uses <strong>n8n</strong> with <strong>VirusTotal v3</strong> enrichment. Treat Ref 10 as historical prototype evidence, not the final enrichment path.</blockquote>
+<h3>1. Trigger (Splunk, Ref 6)</h3>
+<p>Synthetic events from <a href="https://github.com/elvis2121/soc-automation-and-detection-engineering-homelab/blob/main/scripts/highrisk.ps1" target="_blank" rel="noreferrer"><code>scripts/highrisk.ps1</code></a> and <a href="https://github.com/elvis2121/soc-automation-and-detection-engineering-homelab/blob/main/scripts/lowrisk.ps1" target="_blank" rel="noreferrer"><code>scripts/lowrisk.ps1</code></a> are indexed in Splunk (written as JSON lines under <code>C:\SOAR-Test\soar_vt_test.jsonl</code>; no real IOC connections). A search builds a normalized alert. For the high-risk script the alert carries:</p>
+<ul>
+<li>alert title &quot;VirusTotal Malicious IP Detected&quot; / rule &quot;VirusTotal Malicious IP Communication&quot;</li>
+<li>severity <code>high</code>, risk level <code>HIGH_RISK</code>, SOAR alert type <code>VT_HIGH_RISK_TRIGGER</code></li>
+<li>workflow action <code>escalate_to_iris_and_collect_velociraptor</code></li>
+<li>IOC: documentation address <code>198.51.100.66</code> on port 443 (<code>threat_intel_source = VirusTotal</code>)</li>
+</ul>
+<p>The low-risk script maps to benign browser/gateway activity and &quot;No containment required… close as false positive or monitor only.&quot; Splunk sends the alert to n8n by webhook.</p>
+<h3>2. Case creation and enrichment (n8n and DFIR-IRIS, Refs 9-11)</h3>
+<p>In n8n, the alert is normalized, <strong>DFIR-IRIS</strong> opens a case, then a <strong>VirusTotal v3</strong> lookup enriches the indicator (reputation / detection counts).</p>
+<h3>3. LLM verdict</h3>
+<p>The enriched alert is passed to a local model <strong><code>qwen/qwen3.5-9b</code></strong> (primary) via LM Studio or Ollama at temperature <strong>0.1</strong>; Hermes3-8B and Gemma were also tested. The model must emit <code>FINAL_DECISION: HIGH_RISK</code> or <code>FINAL_DECISION: LOW_RISK</code>. An n8n switch branches on that verdict.</p>
+<h3>4. Response</h3>
+<ul>
+<li><strong>HIGH_RISK:</strong> Velociraptor runs <strong><code>Windows.Triage.Collection</code></strong> (Refs 12-14). n8n authenticates to the Wazuh Manager REST API (HTTPS port 55000) and triggers <strong>Active Response</strong> host isolation (e.g. firewall-drop / host-deny) (Ref 8). DFIR-IRIS records a timeline event.</li>
+<li><strong>LOW_RISK:</strong> DFIR-IRIS is updated and the case is documented and closed (flow step 7).</li>
+</ul>
+<h3>Pseudo-flow</h3>
+<pre class="md-pre"><code class="language-text">Synthetic JSONL event (highrisk.ps1 / payload-vt-low-risk.ps1)
+  -&gt; Splunk search builds normalized alert (severity, risk_level, workflow_action, VT fields)
+  -&gt; webhook -&gt; n8n: Normalize Alert
+  -&gt; DFIR-IRIS: create case
+  -&gt; VirusTotal v3 enrichment
+  -&gt; Local LLM (temp 0.1): FINAL_DECISION HIGH_RISK | LOW_RISK
+  -&gt; if HIGH_RISK:
+        Velociraptor Windows.Triage.Collection
+        Wazuh Active Response host isolation
+        DFIR-IRIS: add timeline event
+     else:
+        DFIR-IRIS: low-risk update, document and close</code></pre></article>
+        </div>
       </section>
 
       <section class="report-shell">
@@ -76,105 +224,111 @@
           <div class="report-header">
             <div>
               <p class="section-kicker">Technical walkthrough</p>
-              <h2 class="section-title">Lab evidence and <span class="accent-text">investigation steps.</span></h2>
+              <h2 class="section-title">Evidence <span class="accent-text">walkthrough.</span></h2>
             </div>
             <a class="button button-secondary" href="https://github.com/elvis2121/soc-automation-and-detection-engineering-homelab" target="_blank" rel="noreferrer">Open on GitHub</a>
           </div>
-          <article class="report-content">
+          <article class="report-content"><h3>1. Architecture and topology</h3>
+
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 1: Inter-VLAN telemetry flow and SOAR remediation pipeline control vectors.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-01.png" data-evidence-link data-caption="Ref 1: Inter-VLAN telemetry flow and SOAR remediation pipeline control vectors.">
-            <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-01.png" alt="Network topology and SOAR remediation flow diagram" loading="lazy">
+          <figcaption class="evidence-caption">Ref 1. Inter-VLAN telemetry flow and SOAR remediation pipeline control vectors.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-01.png" data-evidence-link data-caption="Ref 1. Inter-VLAN telemetry flow and SOAR remediation pipeline control vectors.">
+            <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-01.png" alt="Network topology and SOAR remediation flow" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 2: Consolidated homelab architecture connecting perimeter inspection, telemetry, SIEM, and response services.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-02.png" data-evidence-link data-caption="Ref 2: Consolidated homelab architecture connecting perimeter inspection, telemetry, SIEM, and response services.">
+          <figcaption class="evidence-caption">Ref 2. Consolidated homelab architecture connecting perimeter inspection, telemetry, SIEM, and response services.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-02.png" data-evidence-link data-caption="Ref 2. Consolidated homelab architecture connecting perimeter inspection, telemetry, SIEM, and response services.">
             <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-02.png" alt="Homelab architecture overview" loading="lazy">
           </a>
         </figure>
+<h3>2. Perimeter and endpoint instrumentation</h3>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 3: <code>pfSense</code> perimeter configuration supporting LAN control, proxy routing, and inspection.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-03.png" data-evidence-link data-caption="Ref 3: `pfSense` perimeter configuration supporting LAN control, proxy routing, and inspection.">
+          <figcaption class="evidence-caption">Ref 3. <code>pfSense</code> perimeter configuration supporting LAN control, proxy routing, and inspection.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-03.png" data-evidence-link data-caption="Ref 3. `pfSense` perimeter configuration supporting LAN control, proxy routing, and inspection.">
             <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-03.png" alt="pfSense perimeter configuration" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 4: Windows 11 endpoint prepared with <code>Sysmon</code>, <code>Splunk Universal Forwarder</code>, and <code>Wazuh Agent</code>.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-04.png" data-evidence-link data-caption="Ref 4: Windows 11 endpoint prepared with `Sysmon`, `Splunk Universal Forwarder`, and `Wazuh Agent`.">
+          <figcaption class="evidence-caption">Ref 4. Windows 11 endpoint prepared with <code>Sysmon</code>, <code>Splunk Universal Forwarder</code>, and <code>Wazuh Agent</code>.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-04.png" data-evidence-link data-caption="Ref 4. Windows 11 endpoint prepared with `Sysmon`, `Splunk Universal Forwarder`, and `Wazuh Agent`.">
             <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-04.png" alt="Windows 11 endpoint with SOC tooling" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 5: Additional endpoint evidence showing the installed monitoring stack used during workflow validation.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-05.png" data-evidence-link data-caption="Ref 5: Additional endpoint evidence showing the installed monitoring stack used during workflow validation.">
+          <figcaption class="evidence-caption">Ref 5. Additional endpoint evidence showing the installed monitoring stack used during workflow validation.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-05.png" data-evidence-link data-caption="Ref 5. Additional endpoint evidence showing the installed monitoring stack used during workflow validation.">
             <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-05.png" alt="Endpoint telemetry instrumentation evidence" loading="lazy">
           </a>
         </figure>
+<h3>3. Splunk detection and correlation</h3>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 6: Splunk evidence view used to validate the alerting and correlation stage before handing off to SOAR.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-06.png" data-evidence-link data-caption="Ref 6: Splunk evidence view used to validate the alerting and correlation stage before handing off to SOAR.">
+          <figcaption class="evidence-caption">Ref 6. Splunk evidence view used to validate the alerting and correlation stage before handing off to SOAR.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-06.png" data-evidence-link data-caption="Ref 6. Splunk evidence view used to validate the alerting and correlation stage before handing off to SOAR.">
             <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-06.png" alt="Splunk detection and correlation view" loading="lazy">
           </a>
         </figure>
+<h3>4. Wazuh telemetry and active response</h3>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 7: Wazuh alert forwarding into the centralized workflow.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-07.png" data-evidence-link data-caption="Ref 7: Wazuh alert forwarding into the centralized workflow.">
+          <figcaption class="evidence-caption">Ref 7. Wazuh alert forwarding into the centralized workflow.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-07.png" data-evidence-link data-caption="Ref 7. Wazuh alert forwarding into the centralized workflow.">
             <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-07.png" alt="Wazuh alert forwarding view" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 8: Wazuh active response enforcing host isolation through a firewall rule.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-08.png" data-evidence-link data-caption="Ref 8: Wazuh active response enforcing host isolation through a firewall rule.">
+          <figcaption class="evidence-caption">Ref 8. Wazuh active response enforcing host isolation through a firewall rule.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-08.png" data-evidence-link data-caption="Ref 8. Wazuh active response enforcing host isolation through a firewall rule.">
             <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-08.png" alt="Wazuh active response isolation evidence" loading="lazy">
           </a>
         </figure>
+<h3>5. SOAR orchestration and case handling</h3>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 9: <code>n8n</code> workflow receiving Splunk alerts and orchestrating the response chain.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-09.png" data-evidence-link data-caption="Ref 9: `n8n` workflow receiving Splunk alerts and orchestrating the response chain.">
+          <figcaption class="evidence-caption">Ref 9. <code>n8n</code> workflow receiving Splunk alerts and orchestrating the response chain.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-09.png" data-evidence-link data-caption="Ref 9. `n8n` workflow receiving Splunk alerts and orchestrating the response chain.">
             <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-09.png" alt="n8n workflow overview" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 10: <code>n8n</code> branching logic for enrichment, triage, case updates, and automated follow-on actions.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-10.png" data-evidence-link data-caption="Ref 10: `n8n` branching logic for enrichment, triage, case updates, and automated follow-on actions.">
+          <figcaption class="evidence-caption">Ref 10. <code>n8n</code> branching logic for enrichment, triage, case updates, and automated follow-on actions.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-10.png" data-evidence-link data-caption="Ref 10. `n8n` branching logic for enrichment, triage, case updates, and automated follow-on actions.">
             <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-10.png" alt="n8n branching and response logic" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 11: <code>DFIR-IRIS</code> investigation case created and updated for each alert.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-11.png" data-evidence-link data-caption="Ref 11: `DFIR-IRIS` investigation case created and updated for each alert.">
+          <figcaption class="evidence-caption">Ref 11. <code>DFIR-IRIS</code> investigation case created and updated for each alert.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-11.png" data-evidence-link data-caption="Ref 11. `DFIR-IRIS` investigation case created and updated for each alert.">
             <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-11.png" alt="DFIR-IRIS case management evidence" loading="lazy">
           </a>
         </figure>
+<h3>6. Forensic collection</h3>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 12: <code>Velociraptor</code> forensic collection execution for the affected host.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-12.png" data-evidence-link data-caption="Ref 12: `Velociraptor` forensic collection execution for the affected host.">
+          <figcaption class="evidence-caption">Ref 12. <code>Velociraptor</code> forensic collection execution for the affected host.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-12.png" data-evidence-link data-caption="Ref 12. `Velociraptor` forensic collection execution for the affected host.">
             <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-12.png" alt="Velociraptor collection evidence" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 13: Master File Table artifact collection captured during the response workflow.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-13.png" data-evidence-link data-caption="Ref 13: Master File Table artifact collection captured during the response workflow.">
+          <figcaption class="evidence-caption">Ref 13. Master File Table artifact collection captured during the response workflow.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-13.png" data-evidence-link data-caption="Ref 13. Master File Table artifact collection captured during the response workflow.">
             <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-13.png" alt="Master File Table artifact evidence" loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 14: Windows Registry artifact collection preserved as part of automated triage.</figcaption>
-          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-14.png" data-evidence-link data-caption="Ref 14: Windows Registry artifact collection preserved as part of automated triage.">
+          <figcaption class="evidence-caption">Ref 14. Windows Registry artifact collection preserved as part of automated triage.</figcaption>
+          <a class="evidence-link" href="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-14.png" data-evidence-link data-caption="Ref 14. Windows Registry artifact collection preserved as part of automated triage.">
             <img src="../content/projects/soc-automation-and-detection-engineering-homelab/assets/step-14.png" alt="Windows Registry artifact evidence" loading="lazy">
           </a>
         </figure></article>

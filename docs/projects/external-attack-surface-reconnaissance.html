@@ -11,8 +11,8 @@
   <title>External Attack Surface Reconnaissance | Elvis Njau</title>
   <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="../assets/styles.css?v=85217d1e10">
-  <script src="../assets/app.js?v=85217d1e10" defer></script>
+  <link rel="stylesheet" href="../assets/styles.css?v=35d5e17d68">
+  <script src="../assets/app.js?v=35d5e17d68" defer></script>
 </head>
 <body>
 
@@ -71,6 +71,8 @@
         </article>
       </section>
 
+      
+
       <section class="report-shell">
         <div class="container">
           <div class="report-header">
@@ -82,51 +84,51 @@
           </div>
           <article class="report-content">
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 1: 2.dns recon</figcaption>
-          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-01.png" data-evidence-link data-caption="Ref 1: 2.dns recon">
-            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-01.png" alt="2.dns recon" loading="lazy">
+          <figcaption class="evidence-caption">Ref 1: DNSDumpster relationship map for africahackon.com showing discovered DNS, MX, and A-record infrastructure.</figcaption>
+          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-01.png" data-evidence-link data-caption="Ref 1: DNSDumpster relationship map for africahackon.com showing discovered DNS, MX, and A-record infrastructure.">
+            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-01.png" alt="Ref 1: DNSDumpster relationship map for africahackon.com showing discovered DNS, MX, and A-record infrastructure." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 2: 3.sublist3r</figcaption>
-          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-02.png" data-evidence-link data-caption="Ref 2: 3.sublist3r">
-            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-02.png" alt="3.sublist3r" loading="lazy">
+          <figcaption class="evidence-caption">Ref 2: DNSRecon baseline enumeration identifying SuperCP name servers, Google mail exchangers, A records, SPF, Brevo TXT records, DMARC, and missing SRV records.</figcaption>
+          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-02.png" data-evidence-link data-caption="Ref 2: DNSRecon baseline enumeration identifying SuperCP name servers, Google mail exchangers, A records, SPF, Brevo TXT records, DMARC, and missing SRV records.">
+            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-02.png" alt="Ref 2: DNSRecon baseline enumeration identifying SuperCP name servers, Google mail exchangers, A records, SPF, Brevo TXT records, DMARC, and missing SRV records." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 3: 3.sublist3r</figcaption>
-          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-03.png" data-evidence-link data-caption="Ref 3: 3.sublist3r">
-            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-03.png" alt="3.sublist3r" loading="lazy">
+          <figcaption class="evidence-caption">Ref 3: Follow-up DNSRecon run confirming the same DNS, mail, TXT, and DMARC records from the project working directory.</figcaption>
+          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-03.png" data-evidence-link data-caption="Ref 3: Follow-up DNSRecon run confirming the same DNS, mail, TXT, and DMARC records from the project working directory.">
+            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-03.png" alt="Ref 3: Follow-up DNSRecon run confirming the same DNS, mail, TXT, and DMARC records from the project working directory." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 4: 3.sublist3r</figcaption>
-          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-04.png" data-evidence-link data-caption="Ref 4: 3.sublist3r">
-            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-04.png" alt="3.sublist3r" loading="lazy">
+          <figcaption class="evidence-caption">Ref 4: Sublist3r passive subdomain enumeration across public sources, including Baidu, Yahoo, Google, Bing, Netcraft, DNSDumpster, ThreatCrowd, SSL certificates, and PassiveDNS.</figcaption>
+          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-04.png" data-evidence-link data-caption="Ref 4: Sublist3r passive subdomain enumeration across public sources, including Baidu, Yahoo, Google, Bing, Netcraft, DNSDumpster, ThreatCrowd, SSL certificates, and PassiveDNS.">
+            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-04.png" alt="Ref 4: Sublist3r passive subdomain enumeration across public sources, including Baidu, Yahoo, Google, Bing, Netcraft, DNSDumpster, ThreatCrowd, SSL certificates, and PassiveDNS." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 5: Separate both live and dead subdomains</figcaption>
-          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-05.png" data-evidence-link data-caption="Ref 5: Separate both live and dead subdomains">
-            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-05.png" alt="Separate both live and dead subdomains" loading="lazy">
+          <figcaption class="evidence-caption">Ref 5: Sublist3r results listing 31 unique discovered subdomains, including academy, conference, cPanel, events, labs, LMS, mail, members, and summit hosts.</figcaption>
+          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-05.png" data-evidence-link data-caption="Ref 5: Sublist3r results listing 31 unique discovered subdomains, including academy, conference, cPanel, events, labs, LMS, mail, members, and summit hosts.">
+            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-05.png" alt="Ref 5: Sublist3r results listing 31 unique discovered subdomains, including academy, conference, cPanel, events, labs, LMS, mail, members, and summit hosts." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 6: Separate both live and dead subdomains</figcaption>
-          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-06.png" data-evidence-link data-caption="Ref 6: Separate both live and dead subdomains">
-            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-06.png" alt="Separate both live and dead subdomains" loading="lazy">
+          <figcaption class="evidence-caption">Ref 6: httpx-toolkit validation of subdomains.txt showing which discovered hosts responded over HTTP or HTTPS.</figcaption>
+          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-06.png" data-evidence-link data-caption="Ref 6: httpx-toolkit validation of subdomains.txt showing which discovered hosts responded over HTTP or HTTPS.">
+            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-06.png" alt="Ref 6: httpx-toolkit validation of subdomains.txt showing which discovered hosts responded over HTTP or HTTPS." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
-          <figcaption class="evidence-caption">Ref 7: Use at least 5 of the tools we tried out in class. Not just subfinder.</figcaption>
-          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-07.png" data-evidence-link data-caption="Ref 7: Use at least 5 of the tools we tried out in class. Not just subfinder.">
-            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-07.png" alt="Use at least 5 of the tools we tried out in class. Not just subfinder." loading="lazy">
+          <figcaption class="evidence-caption">Ref 7: WAFW00F check identifying africahackon.com as protected by a LiteSpeed Technologies web application firewall.</figcaption>
+          <a class="evidence-link" href="../content/projects/external-attack-surface-reconnaissance/assets/step-07.png" data-evidence-link data-caption="Ref 7: WAFW00F check identifying africahackon.com as protected by a LiteSpeed Technologies web application firewall.">
+            <img src="../content/projects/external-attack-surface-reconnaissance/assets/step-07.png" alt="Ref 7: WAFW00F check identifying africahackon.com as protected by a LiteSpeed Technologies web application firewall." loading="lazy">
           </a>
         </figure></article>
         </div>

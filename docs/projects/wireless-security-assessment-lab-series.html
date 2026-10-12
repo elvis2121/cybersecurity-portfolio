@@ -11,8 +11,8 @@
   <title>Wireless Security Assessment Lab Series | Elvis Njau</title>
   <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="../assets/styles.css?v=85217d1e10">
-  <script src="../assets/app.js?v=85217d1e10" defer></script>
+  <link rel="stylesheet" href="../assets/styles.css?v=35d5e17d68">
+  <script src="../assets/app.js?v=35d5e17d68" defer></script>
 </head>
 <body>
 
@@ -71,6 +71,43 @@
         </article>
       </section>
 
+      
+      <section class="report-shell report-extra">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Project detail</p>
+              <h2 class="section-title">Authorization and Scope</h2>
+            </div>
+          </div>
+          <article class="report-content"><p>All testing in this series was authorized and performed in the author's own lab environment.</p></article>
+        </div>
+      </section>
+
+      <section class="report-shell report-extra">
+        <div class="container">
+          <div class="report-header">
+            <div>
+              <p class="section-kicker">Project detail</p>
+              <h2 class="section-title">Redaction Status</h2>
+            </div>
+          </div>
+          <article class="report-content"><p>TODO (author): the screenshots below may show identifying or sensitive values. Blur or replace them before wider sharing:</p>
+
+    <div class="md-table-wrap">
+      <table class="md-table">
+        <thead><tr><th>Ref</th><th>What to redact</th></tr></thead>
+        <tbody>
+          <tr><td>1, 2, 3, 10</td><td>Lab SSID &quot;NETHUB LR&quot;, BSSID and client MAC addresses</td></tr>
+<tr><td>4, 6, 9, 12, 13, 14, 15</td><td>Third-party SSIDs, BSSIDs, MAC addresses and vendor details of nearby networks</td></tr>
+<tr><td>5, 11, 16</td><td>Recovered WPA/WPA2 pre-shared key</td></tr>
+<tr><td>7</td><td>Submitted test credential in captive-portal requests</td></tr>
+        </tbody>
+      </table>
+    </div></article>
+        </div>
+      </section>
+
       <section class="report-shell">
         <div class="container">
           <div class="report-header">
@@ -84,112 +121,112 @@
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 1: Airodump-ng captured WPA handshake evidence for the target NETHUB LR access point, including BSSID, channel, encryption, connected clients, and EAPOL frame activity.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-01.png" data-evidence-link data-caption="Ref 1: Airodump-ng captured WPA handshake evidence for the target NETHUB LR access point, including BSSID, channel, encryption, connected clients, and EAPOL frame activity.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-01.png" alt="Airodump-ng captured WPA handshake evidence for the target NETHUB LR access point, including BSSID, channel, encryption, connected clients, and EAPOL frame activity." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-01.png" alt="Ref 1: Airodump-ng captured WPA handshake evidence for the target NETHUB LR access point, including BSSID, channel, encryption, connected clients, and EAPOL frame activity." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 2: Aireplay-ng deauthentication traffic was used in the controlled lab to force client reassociation and trigger a fresh WPA handshake capture.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-02.png" data-evidence-link data-caption="Ref 2: Aireplay-ng deauthentication traffic was used in the controlled lab to force client reassociation and trigger a fresh WPA handshake capture.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-02.png" alt="Aireplay-ng deauthentication traffic was used in the controlled lab to force client reassociation and trigger a fresh WPA handshake capture." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-02.png" alt="Ref 2: Aireplay-ng deauthentication traffic was used in the controlled lab to force client reassociation and trigger a fresh WPA handshake capture." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 3: Wireshark analysis filtered the capture to EAPOL frames, confirming the WPA four-way handshake packets were present for the target client and AP.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-03.png" data-evidence-link data-caption="Ref 3: Wireshark analysis filtered the capture to EAPOL frames, confirming the WPA four-way handshake packets were present for the target client and AP.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-03.png" alt="Wireshark analysis filtered the capture to EAPOL frames, confirming the WPA four-way handshake packets were present for the target client and AP." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-03.png" alt="Ref 3: Wireshark analysis filtered the capture to EAPOL frames, confirming the WPA four-way handshake packets were present for the target client and AP." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 4: Airodump-ng reconnaissance showed nearby WPA2 access points, active stations, channels, signal strength, and packet counts used to validate target selection.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-04.png" data-evidence-link data-caption="Ref 4: Airodump-ng reconnaissance showed nearby WPA2 access points, active stations, channels, signal strength, and packet counts used to validate target selection.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-04.png" alt="Airodump-ng reconnaissance showed nearby WPA2 access points, active stations, channels, signal strength, and packet counts used to validate target selection." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-04.png" alt="Ref 4: Airodump-ng reconnaissance showed nearby WPA2 access points, active stations, channels, signal strength, and packet counts used to validate target selection." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 5: Aircrack-ng completed a dictionary-based password audit against the captured handshake and recovered the lab network key.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-05.png" data-evidence-link data-caption="Ref 5: Aircrack-ng completed a dictionary-based password audit against the captured handshake and recovered the lab network key.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-05.png" alt="Aircrack-ng completed a dictionary-based password audit against the captured handshake and recovered the lab network key." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-05.png" alt="Ref 5: Aircrack-ng completed a dictionary-based password audit against the captured handshake and recovered the lab network key." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 6: Wifiphisher enumerated nearby access points with BSSID, channel, encryption, WPS status, client count, and vendor details before selecting the lab target.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-06.png" data-evidence-link data-caption="Ref 6: Wifiphisher enumerated nearby access points with BSSID, channel, encryption, WPS status, client count, and vendor details before selecting the lab target.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-06.png" alt="Wifiphisher enumerated nearby access points with BSSID, channel, encryption, WPS status, client count, and vendor details before selecting the lab target." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-06.png" alt="Ref 6: Wifiphisher enumerated nearby access points with BSSID, channel, encryption, WPS status, client count, and vendor details before selecting the lab target." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 7: Wifiphisher ran the controlled rogue access point scenario, showing a connected lab client, captive-portal HTTP requests, and the submitted test credential.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-07.png" data-evidence-link data-caption="Ref 7: Wifiphisher ran the controlled rogue access point scenario, showing a connected lab client, captive-portal HTTP requests, and the submitted test credential.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-07.png" alt="Wifiphisher ran the controlled rogue access point scenario, showing a connected lab client, captive-portal HTTP requests, and the submitted test credential." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-07.png" alt="Ref 7: Wifiphisher ran the controlled rogue access point scenario, showing a connected lab client, captive-portal HTTP requests, and the submitted test credential." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 8: Reaver WPS testing targeted a selected access point, received beacon frames, attempted PIN authentication, and recorded repeated receive-timeout warnings.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-08.png" data-evidence-link data-caption="Ref 8: Reaver WPS testing targeted a selected access point, received beacon frames, attempted PIN authentication, and recorded repeated receive-timeout warnings.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-08.png" alt="Reaver WPS testing targeted a selected access point, received beacon frames, attempted PIN authentication, and recorded repeated receive-timeout warnings." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-08.png" alt="Ref 8: Reaver WPS testing targeted a selected access point, received beacon frames, attempted PIN authentication, and recorded repeated receive-timeout warnings." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 9: Kismet provided a browser-based wireless inventory with detected APs, encryption types, channels, packet activity, signal levels, and manufacturer data.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-09.png" data-evidence-link data-caption="Ref 9: Kismet provided a browser-based wireless inventory with detected APs, encryption types, channels, packet activity, signal levels, and manufacturer data.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-09.png" alt="Kismet provided a browser-based wireless inventory with detected APs, encryption types, channels, packet activity, signal levels, and manufacturer data." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-09.png" alt="Ref 9: Kismet provided a browser-based wireless inventory with detected APs, encryption types, channels, packet activity, signal levels, and manufacturer data." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 10: Aircrack-ng converted the captured WPA handshake into Hashcat-compatible format and identified the NETHUB LR handshake as the cracking target.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-10.png" data-evidence-link data-caption="Ref 10: Aircrack-ng converted the captured WPA handshake into Hashcat-compatible format and identified the NETHUB LR handshake as the cracking target.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-10.png" alt="Aircrack-ng converted the captured WPA handshake into Hashcat-compatible format and identified the NETHUB LR handshake as the cracking target." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-10.png" alt="Ref 10: Aircrack-ng converted the captured WPA handshake into Hashcat-compatible format and identified the NETHUB LR handshake as the cracking target." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 11: Hashcat completed the WPA-PBKDF2 audit in mode 22000, marked the hash as cracked, and reported the recovered lab PSK.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-11.png" data-evidence-link data-caption="Ref 11: Hashcat completed the WPA-PBKDF2 audit in mode 22000, marked the hash as cracked, and reported the recovered lab PSK.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-11.png" alt="Hashcat completed the WPA-PBKDF2 audit in mode 22000, marked the hash as cracked, and reported the recovered lab PSK." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-11.png" alt="Ref 11: Hashcat completed the WPA-PBKDF2 audit in mode 22000, marked the hash as cracked, and reported the recovered lab PSK." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 12: Bettercap wireless reconnaissance started on wlan0, enabled channel hopping, and logged newly discovered access points and client probe activity.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-12.png" data-evidence-link data-caption="Ref 12: Bettercap wireless reconnaissance started on wlan0, enabled channel hopping, and logged newly discovered access points and client probe activity.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-12.png" alt="Bettercap wireless reconnaissance started on wlan0, enabled channel hopping, and logged newly discovered access points and client probe activity." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-12.png" alt="Ref 12: Bettercap wireless reconnaissance started on wlan0, enabled channel hopping, and logged newly discovered access points and client probe activity." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 13: Bettercap wifi.show summarized discovered networks by RSSI, BSSID, SSID, encryption, WPS version, channel, client count, and observed traffic.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-13.png" data-evidence-link data-caption="Ref 13: Bettercap wifi.show summarized discovered networks by RSSI, BSSID, SSID, encryption, WPS version, channel, client count, and observed traffic.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-13.png" alt="Bettercap wifi.show summarized discovered networks by RSSI, BSSID, SSID, encryption, WPS version, channel, client count, and observed traffic." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-13.png" alt="Ref 13: Bettercap wifi.show summarized discovered networks by RSSI, BSSID, SSID, encryption, WPS version, channel, client count, and observed traffic." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 14: Bettercap net.sniff captured live 802.11 management beacon frames, showing transmitter and receiver addresses for observed wireless networks.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-14.png" data-evidence-link data-caption="Ref 14: Bettercap net.sniff captured live 802.11 management beacon frames, showing transmitter and receiver addresses for observed wireless networks.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-14.png" alt="Bettercap net.sniff captured live 802.11 management beacon frames, showing transmitter and receiver addresses for observed wireless networks." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-14.png" alt="Ref 14: Bettercap net.sniff captured live 802.11 management beacon frames, showing transmitter and receiver addresses for observed wireless networks." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 15: Wifite2 enumerated wireless targets in monitor mode, highlighting ESSID, channel, encryption type, signal strength, WPS availability, and client presence.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-15.png" data-evidence-link data-caption="Ref 15: Wifite2 enumerated wireless targets in monitor mode, highlighting ESSID, channel, encryption type, signal strength, WPS availability, and client presence.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-15.png" alt="Wifite2 enumerated wireless targets in monitor mode, highlighting ESSID, channel, encryption type, signal strength, WPS availability, and client presence." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-15.png" alt="Ref 15: Wifite2 enumerated wireless targets in monitor mode, highlighting ESSID, channel, encryption type, signal strength, WPS availability, and client presence." loading="lazy">
           </a>
         </figure>
 
         <figure class="evidence-item" data-reveal>
           <figcaption class="evidence-caption">Ref 16: Wifite2 captured and validated a WPA handshake, ran a wordlist audit, saved the evidence file, and recorded the recovered test PSK in the results output.</figcaption>
           <a class="evidence-link" href="../content/projects/wireless-security-assessment-lab-series/assets/step-16.png" data-evidence-link data-caption="Ref 16: Wifite2 captured and validated a WPA handshake, ran a wordlist audit, saved the evidence file, and recorded the recovered test PSK in the results output.">
-            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-16.png" alt="Wifite2 captured and validated a WPA handshake, ran a wordlist audit, saved the evidence file, and recorded the recovered test PSK in the results output." loading="lazy">
+            <img src="../content/projects/wireless-security-assessment-lab-series/assets/step-16.png" alt="Ref 16: Wifite2 captured and validated a WPA handshake, ran a wordlist audit, saved the evidence file, and recorded the recovered test PSK in the results output." loading="lazy">
           </a>
         </figure></article>
         </div>
