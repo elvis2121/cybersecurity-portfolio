@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#070914">
-  <meta name="description" content="The lab is organized into three operational planes:">
+  <meta name="description" content="Built and validated an end-to-end SOC detection and response pipeline: Splunk correlation alerts trigger an n8n SOAR workflow that enriches indicators with VirusTotal v3 and asks a local LLM (qwen/qwen3.5-9b, temperature 0.1) for a deterministic HIGHRISK or LOWRISK verdict. Each alert opens a DFIR-I">
   <meta property="og:title" content="SOC Automation and Detection Engineering Homelab | Elvis Njau">
-  <meta property="og:description" content="The lab is organized into three operational planes:">
+  <meta property="og:description" content="Built and validated an end-to-end SOC detection and response pipeline: Splunk correlation alerts trigger an n8n SOAR workflow that enriches indicators with VirusTotal v3 and asks a local LLM (qwen/qwen3.5-9b, temperature 0.1) for a deterministic HIGHRISK or LOWRISK verdict. Each alert opens a DFIR-I">
   <meta property="og:type" content="website">
   <title>SOC Automation and Detection Engineering Homelab | Elvis Njau</title>
   <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon.png">
@@ -45,7 +45,7 @@
             <div data-reveal>
               <p class="section-kicker">Detection Engineering case study</p>
               <h1>SOC Automation and Detection Engineering Homelab</h1>
-              <p class="project-objective">The lab is organized into three operational planes:</p>
+              <p class="project-objective">Built and validated an end-to-end SOC detection and response pipeline: Splunk correlation alerts trigger an n8n SOAR workflow that enriches indicators with VirusTotal v3 and asks a local LLM (<code>qwen/qwen3.5-9b</code>, temperature 0.1) for a deterministic HIGH_RISK or LOW_RISK verdict. Each alert opens a DFIR-IRIS case; high-risk verdicts automatically trigger a Velociraptor <code>Windows.Triage.Collection</code> and Wazuh Active Response host isolation, while low-risk alerts are documented and closed. The full path was validated with synthetic high-risk and low-risk scenarios, without live malware or real IOC traffic.</p>
               <div class="button-row">
                 <a class="button" href="https://github.com/elvis2121/soc-automation-and-detection-engineering-homelab" target="_blank" rel="noreferrer">View GitHub repository</a>
                 <a class="button button-secondary" href="../#projects">All projects</a>
