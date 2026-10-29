@@ -213,12 +213,6 @@
       "url": "https://www.credly.com/badges/580cd285-30ff-478d-8258-0a4c15fbf886"
     },
     {
-      "name": "Google Cybersecurity Professional Certificate",
-      "issuer": "Google / Coursera",
-      "date": "December 2024",
-      "url": "https://coursera.org/account/accomplishments/specialization/certificate/L6AZEQAO3U3O"
-    },
-    {
       "name": "AfricaHackOn Cyber Security Swara",
       "issuer": "AfricaHackon Academy",
       "date": "June 2026",
@@ -242,7 +236,7 @@
       "company": "Self-directed, home SOC lab",
       "period": "2024 - Present",
       "details": [
-        "Earned BTL1, TryHackMe SAL1, and the Google Cybersecurity Professional Certificate.",
+        "Earned BTL1 and TryHackMe SAL1.",
         "Built a Splunk, n8n, DFIR-IRIS, Velociraptor, and Wazuh pipeline that runs from alert to host isolation.",
         "Wrote Snort rules and validated them against captured scan and ICMP traffic.",
         "Published 12 lab write-ups on GitHub with step-by-step evidence."
