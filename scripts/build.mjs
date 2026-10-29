@@ -493,8 +493,8 @@ const projectCard = (project, index) => `
 
 const principles = [
   ["01", "Engineer resilient defenses", "Design layered controls, segmented environments, and dependable telemetry that reduce risk across infrastructure, endpoints, networks, applications, and cloud platforms."],
-  ["02", "Lead response and risk decisions", "Guide investigations, validate threats and vulnerabilities, and translate technical evidence into prioritized remediation and clear direction for stakeholders."],
-  ["03", "Scale security capability", "Automate repeatable workflows, improve detection and response playbooks, mentor technical teams, and turn operational lessons into stronger controls."]
+  ["02", "Investigate and respond", "Triage alerts, validate threats and vulnerabilities, and turn technical evidence into prioritized remediation."],
+  ["03", "Automate the repeatable", "Automate enrichment and response workflows, improve playbooks, and turn lab lessons into stronger detections."]
 ];
 
 const homeBody = `
@@ -526,7 +526,7 @@ const homeBody = `
       <div class="container stats-grid">
         <div class="stat"><strong>${projects.length}</strong><span>Published labs</span></div>
         <div class="stat"><strong>${projects.reduce((total, project) => total + project.screenshotCount, 0)}+</strong><span>Evidence captures</span></div>
-        <div class="stat"><strong>8 yrs</strong><span>IT experience</span></div>
+        <div class="stat"><strong>10 yrs</strong><span>IT experience</span></div>
         <div class="stat"><strong>${profile.certifications.length}</strong><span>Credentials</span></div>
       </div>
     </section>
@@ -535,7 +535,7 @@ const homeBody = `
       <div class="container about-grid">
         <aside class="about-aside" data-reveal>
           <p class="section-kicker">About Elvis</p>
-          <h2 class="section-title">Security engineering grounded in <span class="accent-text">strategy and proof.</span></h2>
+          <h2 class="section-title">Security operations grounded in <span class="accent-text">practice and proof.</span></h2>
           <p class="section-copy">${escapeHtml(profile.aboutSenior)}</p>
         </aside>
         <div class="principles">
@@ -603,7 +603,7 @@ const homeBody = `
     <section class="section" id="experience">
       <div class="container">
         <p class="section-kicker">Professional foundation</p>
-        <h2 class="section-title">Experience supporting <span class="accent-text">reliable, secure operations.</span></h2>
+        <h2 class="section-title">Ten years in IT, <span class="accent-text">now focused on security operations.</span></h2>
         <div class="timeline">
           ${profile.experience
             .map(
@@ -635,6 +635,7 @@ const homeBody = `
                   <span class="cert-date">${escapeHtml(certification.date)}</span>
                   <h3>${escapeHtml(certification.name)}</h3>
                   <p>${escapeHtml(certification.issuer)}</p>
+                  ${certification.url ? `<a class="cert-link" href="${escapeHtml(certification.url)}" target="_blank" rel="noreferrer">Verify credential</a>` : ""}
                 </article>`
             )
             .join("")}

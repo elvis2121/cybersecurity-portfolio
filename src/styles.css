@@ -838,6 +838,14 @@ button {
   font-size: 0.86rem;
 }
 
+.cert-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--accent-bright);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
 .opportunity-card {
   position: relative;
   overflow: hidden;
